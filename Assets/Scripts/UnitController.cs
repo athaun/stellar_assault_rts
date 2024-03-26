@@ -18,7 +18,7 @@ public class UnitController : MonoBehaviour {
     public GameObject newPositionMarker;
     private float origionalMouseScreenYpos;
 
-    void Awake () {
+    void Awake() {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); // set the mainCamera variable to the camera with the tag "MainCamera"
         groundLayer = LayerMask.GetMask("Terrain"); // Set the ground layer (at y = 0) as the "Terrain" layer
 
@@ -32,23 +32,23 @@ public class UnitController : MonoBehaviour {
         }
     }
 
-    public void findSelectedUnit () {
+    public void findSelectedUnit() {
         selectedUnit = GameObject.FindGameObjectWithTag("SelectedUnit");
         if (selectedUnit == null) {
             move = false;
         }
     }
 
-    public Vector3 getSelectedUnitPosition () {
+    public Vector3 getSelectedUnitPosition() {
         return selectedUnit.transform.position;
     }
 
-    private static float map (float value, float fromLow, float fromHigh, float toLow, float toHigh) {
+    private static float map(float value, float fromLow, float fromHigh, float toLow, float toHigh) {
         // Re-maps a number from one range to another.
         return (value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
     }
 
-    private void getMoveToLocation () {
+    private void getMoveToLocation() {
         if (Input.GetMouseButtonDown(1)) {
             // First press, selects a X and Z position on the plane
             newPosition = GetPointUnderCursor();
@@ -90,7 +90,7 @@ public class UnitController : MonoBehaviour {
         }
     }
 
-    private Vector3 ScreenToWorldPointPerspective () {
+    private Vector3 ScreenToWorldPointPerspective() {
         // Adjusts ray cast to non isometric camera projection
         Plane plane = new Plane(new Vector3(0, 1, 0), 0);
 
@@ -102,7 +102,7 @@ public class UnitController : MonoBehaviour {
         return new Vector3(0, 0, 0);
     }
 
-    private Vector3 GetPointUnderCursor () {
+    private Vector3 GetPointUnderCursor() {
         Vector2 screenPosititon = Input.mousePosition;
         Vector3 mouseWorldPosition = ScreenToWorldPointPerspective();
         RaycastHit hitPosition;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 
-public class Outline: MonoBehaviour {
+public class Outline : MonoBehaviour {
 
     [SerializeField]
     public Color outlineColor = Color.white;
@@ -22,8 +22,8 @@ public class Outline: MonoBehaviour {
     void Awake() {
 
         // Cache renderers
-        renderers = GetComponentsInChildren < Renderer > ();
-        foreach(var renderer in renderers) {
+        renderers = GetComponentsInChildren<Renderer>();
+        foreach (var renderer in renderers) {
             var propertyBlock = new MaterialPropertyBlock();
             renderer.GetPropertyBlock(propertyBlock);
             propertyBlock.SetColor("_SelectionColor", outlineColor);
@@ -56,7 +56,7 @@ public class Outline: MonoBehaviour {
     }
 
     void OnDisable() {
-        foreach(var renderer in renderers) {
+        foreach (var renderer in renderers) {
 
         }
     }

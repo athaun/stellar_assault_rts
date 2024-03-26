@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitSelectionManager : MonoBehaviour {
-    
+
     public GameObject selected;
     LayerMask unitMask;
 
@@ -12,13 +12,13 @@ public class UnitSelectionManager : MonoBehaviour {
 
     // private List<Unit> selectedUnits = new List<Unit>();
 
-    void Start () {
+    void Start() {
         unitMask = LayerMask.GetMask("Unit");
         selected = GameObject.FindGameObjectWithTag("SelectedUnit");
     }
 
-    void Update() {     
-        if (Input.GetMouseButtonDown(0)) { 
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) {
             selectUnit();
             mouseStartPosition = Input.mousePosition;
         }
@@ -38,7 +38,7 @@ public class UnitSelectionManager : MonoBehaviour {
         return position.x > bounds.min.x && position.x < bounds.max.x && position.y > bounds.min.y && position.y < bounds.max.y;
     }
 
-    void updateSelectionBox (Vector2 mousePosition) {
+    void updateSelectionBox(Vector2 mousePosition) {
         if (!selectionBox.gameObject.activeInHierarchy) {
             selectionBox.gameObject.SetActive(true);
         }
@@ -66,16 +66,16 @@ public class UnitSelectionManager : MonoBehaviour {
         }
     }
 
-    void releaseSelectionBox () {
+    void releaseSelectionBox() {
         selectionBox.gameObject.SetActive(false);
 
         Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
         Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
     }
 
-    void selectUnit () {
+    void selectUnit() {
         Transform underMouse = GetClickedGameObject();
-        
+
         if (underMouse != null) {
             // If the player selected a unit
             if (selected != null) {
@@ -97,21 +97,21 @@ public class UnitSelectionManager : MonoBehaviour {
         }
     }
 
-    void removeOutlinesFromUnselected () {
+    void removeOutlinesFromUnselected() {
         GameObject[] unselected = GameObject.FindGameObjectsWithTag("selectableUnit");
         foreach (GameObject u in unselected) {
             u.gameObject.GetComponent<Outline>().enabled = false;
         }
     }
 
-    Transform GetClickedGameObject() { 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
-        RaycastHit hit; 
+    Transform GetClickedGameObject() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, unitMask)) {
             return hit.transform;
         } else {
-            return null; 
+            return null;
         }
     }
 }
