@@ -14,7 +14,7 @@ public class UnitMover : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
+
     }
 
     void Update() {
@@ -38,24 +38,24 @@ public class UnitMover : MonoBehaviour {
 
                 // Move towards (0, 0, 1) relative to ship rotation
                 float distToTarget = Vector3.Distance(newPosition, transform.position);
-                
+
                 if (!closeToTarget) {
                     speed = Mathf.Clamp(Vector3.Distance(newPosition, transform.position), 0, defaultSpeed);
                 } else {
-                    speed = Mathf.Clamp(Vector3.Distance(newPosition, transform.position)/2, 0, defaultSpeed);
+                    speed = Mathf.Clamp(Vector3.Distance(newPosition, transform.position) / 2, 0, defaultSpeed);
                 }
 
                 if (speed < 0.06) {
                     speed = 0;
                     move = false;
                 }
-                
+
                 transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.Self);
             }
         }
     }
 
-    public void moveTo (Vector3 newPos) {
+    public void moveTo(Vector3 newPos) {
         newPosition = newPos;
         move = true;
     }
