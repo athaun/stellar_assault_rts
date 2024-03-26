@@ -1,0 +1,14 @@
+
+Asher:
+- add box selection for multiple units
+- improve pathfinding and accuracy
+- add individual unit selection
+Done:
+- camera
+
+Arsdor:
+
+
+General:
+- GUI
+-
