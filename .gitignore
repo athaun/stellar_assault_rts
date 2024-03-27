@@ -86,3 +86,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 .DS_Store
+Assets/.DS_Store
