@@ -40,11 +40,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 0.2930608
+    m_OverrideState: 1
+    m_Value: 0.2930618
   upperHemisphereLuxColor:
-    m_OverrideState: 0
-    m_Value: {x: 0.5, y: 0.49986714, z: 0.49914524}
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.49986687, z: 0.49914467}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -83,6 +83,12 @@ MonoBehaviour:
       customValue: 100
       additiveValue: 0
       multiplyValue: 1
+  sunInitialRotation:
+    m_OverrideState: 0
+    m_Value: -Infinity
+  lockSun:
+    m_OverrideState: 0
+    m_Value: 0
   enableBackplate:
     m_OverrideState: 0
     m_Value: 0
