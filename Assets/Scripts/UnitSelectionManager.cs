@@ -56,12 +56,12 @@ public class UnitSelectionManager : MonoBehaviour {
             if (unitInSelectionBox(Camera.main.WorldToScreenPoint(u.transform.position), bounds)) {
                 u.gameObject.GetComponent<Outline>().enabled = true;
                 u.gameObject.tag = "SelectedUnit";
-                Debug.Log("Unit in selection box");
+                //Debug.Log("Unit in selection box");
             } else {
                 u.gameObject.GetComponent<Outline>().enabled = false;
                 //
                 u.gameObject.tag = "selectableUnit";
-                Debug.Log("Unit not in selection box");
+                //Debug.Log("Unit not in selection box");
             }
         }
     }
