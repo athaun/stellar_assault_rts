@@ -28,8 +28,4 @@ public class InstantiateShips : MonoBehaviour
             }
         }
     }
-    public void OnPressShipButton(GameObject ship)
-    {
-        selectedShip = ship;
-    }
 }
