@@ -89,3 +89,4 @@ $RECYCLE.BIN/
 *.lnk
 .DS_Store
 Assets/.DS_Store
+ProjectSettings/ProjectSettings.asset
