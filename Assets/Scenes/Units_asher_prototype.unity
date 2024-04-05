@@ -1672,7 +1672,7 @@ PrefabInstance:
     - target: {fileID: 7498023063095419739, guid: 7f0c875eadb078240b1c224e9d508850,
         type: 3}
       propertyPath: m_Name
-      value: Phantom
+      value: Banshee
       objectReference: {fileID: 0}
     - target: {fileID: 8520203054538222180, guid: 7f0c875eadb078240b1c224e9d508850,
         type: 3}
@@ -2307,7 +2307,7 @@ PrefabInstance:
     - target: {fileID: 7498023063095419739, guid: 56f2d947cddeba04ba5a153b55eca725,
         type: 3}
       propertyPath: m_Name
-      value: Banshee
+      value: Revenant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2416,7 +2416,7 @@ PrefabInstance:
     - target: {fileID: 7498023063095419739, guid: 51822c45955c0124fac43eee0472c7ef,
         type: 3}
       propertyPath: m_Name
-      value: Ravener
+      value: Phantom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
