@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7498023061864116335}
-  - component: {fileID: 7498023063095419737}
   - component: {fileID: 8520203054538222180}
+  - component: {fileID: 7985947190472780062}
+  - component: {fileID: 4532498729790709373}
   m_Layer: 12
   m_Name: Banshee
   m_TagString: selectableUnit
@@ -34,20 +35,6 @@ Transform:
   - {fileID: 7498023063330041273}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7498023063095419737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498023063095419739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineColor: {r: 0, g: 0.9528302, b: 0.92199856, a: 1}
-  enabled: 0
 --- !u!114 &8520203054538222180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,9 +48,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSpeed: 3
-  speed: 0
-  rotationSpeed: 200
+  rotationSpeed: 0.8
   closeToTarget: 0
+--- !u!114 &7985947190472780062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498023063095419739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineColor: {r: 0, g: 0.9500499, b: 1, a: 1}
+  enabled: 0
+--- !u!114 &4532498729790709373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498023063095419739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
 --- !u!1 &7498023063330041274
 GameObject:
   m_ObjectHideFlags: 0
