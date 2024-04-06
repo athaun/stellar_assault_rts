@@ -8,7 +8,7 @@ public class UnitController : MonoBehaviour {
     private Camera mainCamera;
     private LayerMask groundLayer;
 
-    public GameObject selectedUnit;
+    private UnitSelectionManager units;
 
     private bool pressed = false;
     private bool move = false;
@@ -20,7 +20,10 @@ public class UnitController : MonoBehaviour {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); // set the mainCamera variable to the camera with the tag "MainCamera"
         groundLayer = LayerMask.GetMask("Terrain"); // Set the ground layer (at y = 0) as the "Terrain" layer
 
-        selectedUnit = GameObject.FindGameObjectWithTag("SelectedUnit");
+        units = FindFirstObjectByType<UnitSelectionManager>();
+        if (units == null) {
+            Debug.LogError("UnitSelectionManager not found in the scene! -UnitController awake");
+        }
 
         newPositionMarker = Instantiate(newPositionMarker);
 
@@ -31,14 +34,14 @@ public class UnitController : MonoBehaviour {
     }
 
     public void findSelectedUnit() {
-        selectedUnit = GameObject.FindGameObjectWithTag("SelectedUnit");
-        if (selectedUnit == null) {
+        if (units.SelectedUnits.Count == 0) {
             move = false;
         }
     }
 
     public Vector3 getSelectedUnitPosition() {
-        return selectedUnit.transform.position;
+        // TODO: Later make this return the center of the group of selected units. Or, remove (probably this)
+        return units.SelectedUnits[0].transform.position;
     }
 
     private void getMoveToLocation() {
@@ -54,17 +57,12 @@ public class UnitController : MonoBehaviour {
             pressed = false;
             move = true;
 
-            Ship ship = selectedUnit.GetComponent<Ship>();
-
-            if (ship == null) {
-                Debug.Log("CANT FIND SHIP UNIT CONTROLLER");
-                return;
-            }
-
-            ship.Mover.Speed = ship.Mover.defaultSpeed;
-            if (Vector3.Distance(selectedUnit.transform.position, newPosition) < 5) {
-                ship.Mover.Speed = 0.3f;
-                ship.Mover.closeToTarget = true;
+            foreach (Ship ship in units.SelectedUnits) {
+                ship.Mover.Speed = ship.Mover.defaultSpeed;
+                if (Vector3.Distance(ship.transform.position, newPosition) < 5) {
+                    ship.Mover.Speed = 0.3f;
+                    ship.Mover.closeToTarget = true;
+                }
             }
         }
 
@@ -76,11 +74,13 @@ public class UnitController : MonoBehaviour {
 
     void Update() {
         findSelectedUnit();
-        if (selectedUnit != null) {
+        if (units.SelectedUnits.Count != 0) {
             getMoveToLocation();
             if (move) {
-                // rotateAndMove();
-                selectedUnit.GetComponent<UnitMover>().moveTo(newPosition);
+                // selectedUnit.GetComponent<UnitMover>().moveTo(newPosition);
+                foreach (Ship ship in units.SelectedUnits) {
+                    ship.Mover.moveTo(newPosition);
+                }
                 move = false;
             }
         }
