@@ -12,11 +12,9 @@ public class UnitController : MonoBehaviour {
 
     private bool pressed = false;
     private bool move = false;
-    private float step;
 
     private Vector3 newPosition;
     public GameObject newPositionMarker;
-    private float origionalMouseScreenYpos;
 
     void Awake() {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); // set the mainCamera variable to the camera with the tag "MainCamera"
@@ -43,16 +41,10 @@ public class UnitController : MonoBehaviour {
         return selectedUnit.transform.position;
     }
 
-    private static float map(float value, float fromLow, float fromHigh, float toLow, float toHigh) {
-        // Re-maps a number from one range to another.
-        return (value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
-    }
-
     private void getMoveToLocation() {
         if (Input.GetMouseButtonDown(1)) {
             // First press, selects a X and Z position on the plane
             newPosition = GetPointUnderCursor();
-            origionalMouseScreenYpos = Input.mousePosition.y;
             pressed = true;
             move = false;
 
@@ -62,19 +54,23 @@ public class UnitController : MonoBehaviour {
             pressed = false;
             move = true;
 
-            UnitMover suMover = selectedUnit.GetComponent<UnitMover>();
+            Ship ship = selectedUnit.GetComponent<Ship>();
 
-            suMover.speed = suMover.defaultSpeed;
+            if (ship == null) {
+                Debug.Log("CANT FIND SHIP UNIT CONTROLLER");
+                return;
+            }
+
+            ship.Mover.Speed = ship.Mover.defaultSpeed;
             if (Vector3.Distance(selectedUnit.transform.position, newPosition) < 5) {
-                suMover.speed = 0.3F;
-                suMover.closeToTarget = true;
+                ship.Mover.Speed = 0.3f;
+                ship.Mover.closeToTarget = true;
             }
         }
-        if (pressed) {
-            // Mouse is still held down, moving up or down changes the Y coordinates
-            newPosition.y = Mathf.Clamp(map((origionalMouseScreenYpos - Input.mousePosition.y) * 2, Screen.height, -Screen.height, -20, 20), -50, 50);
-            newPositionMarker.transform.position = newPosition;
 
+        if (pressed) {
+            newPosition.y = 0.001f;
+            newPositionMarker.transform.position = newPosition;
         }
     }
 
@@ -122,4 +118,3 @@ public class UnitController : MonoBehaviour {
         }
     }
 }
-

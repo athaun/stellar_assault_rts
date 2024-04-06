@@ -645,6 +645,20 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1228351167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &524041289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182098854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
 --- !u!1 &535263203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1716,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 182098856}
+    - targetCorrespondingSourceObject: {fileID: 7498023063095419739, guid: 7f0c875eadb078240b1c224e9d508850,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 524041289}
   m_SourcePrefab: {fileID: 100100000, guid: 7f0c875eadb078240b1c224e9d508850, type: 3}
 --- !u!1 &1343596852 stripped
 GameObject:
@@ -1963,6 +1981,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520203054538222180, guid: 92a0cfa15bc5cb241a8eb2394164f7c7,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520203054538222180, guid: 92a0cfa15bc5cb241a8eb2394164f7c7,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2309,6 +2337,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Revenant
       objectReference: {fileID: 0}
+    - target: {fileID: 8520203054538222180, guid: 56f2d947cddeba04ba5a153b55eca725,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520203054538222180, guid: 56f2d947cddeba04ba5a153b55eca725,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2417,6 +2455,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Phantom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520203054538222180, guid: 51822c45955c0124fac43eee0472c7ef,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520203054538222180, guid: 51822c45955c0124fac43eee0472c7ef,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
