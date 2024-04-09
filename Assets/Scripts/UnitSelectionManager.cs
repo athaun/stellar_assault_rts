@@ -10,6 +10,8 @@ public class UnitSelectionManager : MonoBehaviour {
     public List<Ship> AllUnits { get { return allUnits; } }
     public List<Ship> SelectedUnits { get { return selectedUnits; } }
 
+    public Color[] factionColors;
+
     private LayerMask unitMask;
 
     public RectTransform selectionBox;
@@ -40,6 +42,7 @@ public class UnitSelectionManager : MonoBehaviour {
     */
     public void registerShip(Ship ship) {
         allUnits.Add(ship);
+        ship.Outline.SetColor(factionColors[ship.faction]);
     }
 
     private bool inSelection(Vector2 position, Bounds bounds) {

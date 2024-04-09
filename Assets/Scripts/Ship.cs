@@ -10,10 +10,12 @@ public class Ship : MonoBehaviour {
 
     private Vector3 destination;
 
-    public bool selectedByClick = false;
+    [HideInInspector] public bool selectedByClick = false; // Prevents reset from deselection if outside selection box
 
     public UnitMover Mover { get { return mover; } }
     public Outline Outline { get { return outline; } }
+
+    public int faction;
 
     void Start() {
         mover = GetComponent<UnitMover>();
