@@ -1,39 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
 
 public class Outline : MonoBehaviour {
 
-    [SerializeField]
-    public Color outlineColor = Color.white;
+    private Color outlineColor = Color.white;
 
-    public bool enabled = false;
-
-    // [SerializeField, Range(0f, 10f)]
-    // private float outlineWidth = 2f;
+    public new bool enabled = false;
 
     private Renderer[] renderers;
 
-    private bool needsUpdate;
-
     void Awake() {
-
         // Cache renderers
         renderers = GetComponentsInChildren<Renderer>();
+
+        UpdateShaders();
+    }
+
+    private void UpdateShaders() {
         foreach (var renderer in renderers) {
             var propertyBlock = new MaterialPropertyBlock();
             renderer.GetPropertyBlock(propertyBlock);
             propertyBlock.SetColor("_SelectionColor", outlineColor);
             renderer.SetPropertyBlock(propertyBlock);
         }
-
     }
 
-    void OnEnable() {
-
+    public void SetColor(Color color) {
+        outlineColor = color;
+        UpdateShaders();
     }
 
     void Update() {
@@ -53,15 +48,5 @@ public class Outline : MonoBehaviour {
             if (null == child) continue;
             SetLayerRecursively(child.gameObject, newLayer);
         }
-    }
-
-    void OnDisable() {
-        foreach (var renderer in renderers) {
-
-        }
-    }
-
-    void UpdateMaterialProperties() {
-        // outlineFillMaterial.SetColor("_OutlineColor", outlineColor);
     }
 }

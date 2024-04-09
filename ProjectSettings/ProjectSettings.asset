@@ -163,7 +163,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.rts.soumidelrio
-    Standalone: unity.SoumiDelRio.RTSEngine
+    Standalone: com.DefaultCompany.Stellar-Assault-Invisible-War
     Tizen: com.Company.ProductName
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName

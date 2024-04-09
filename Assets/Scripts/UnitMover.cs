@@ -8,13 +8,13 @@ public class UnitMover : MonoBehaviour {
     bool move = false;
 
     public float defaultSpeed = 3;
-    public float speed;
+    private float speed;
     public float rotationSpeed = 200;
     public bool closeToTarget = false;
 
-    // Start is called before the first frame update
-    void Start() {
-
+    public float Speed {
+        get { return speed; }
+        set { speed = value; }
     }
 
     void Update() {
