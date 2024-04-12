@@ -1,0 +1,4 @@
+- Unit models: Arsdor, used with permission
+- HDRI Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633
+- Unit selection shader: 
+- Music: ApproachingNirvana, https://youtu.be/3xobfvgMrWo
