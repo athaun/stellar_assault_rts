@@ -9,6 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 
+UserSettings/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -83,7 +85,18 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-# Windows shortcuts
 *.lnk
 .DS_Store
 Assets/.DS_Store
+ProjectSettings/ProjectSettings.asset
+Assets/.DS_Store
+.DS_Store
+.DS_Store
+.idea/
+.idea/*
+
+*/.DS_Store
+
+*/UserSettings/Layouts/*
+UserSettings/Layouts/*
+UserSettings/EditorUserSettings.asset

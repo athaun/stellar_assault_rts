@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class UnitSelectionManager : MonoBehaviour {
 
-    public GameObject selected;
-    LayerMask unitMask;
+    private List<Ship> allUnits = new List<Ship>();
+    private List<Ship> selectedUnits = new List<Ship>();
+
+    public List<Ship> AllUnits { get { return allUnits; } }
+    public List<Ship> SelectedUnits { get { return selectedUnits; } }
+
+    public Color[] factionColors;
+
+    private LayerMask unitMask;
 
     public RectTransform selectionBox;
     private Vector2 mouseStartPosition;
 
-    // private List<Unit> selectedUnits = new List<Unit>();
-
     void Start() {
         unitMask = LayerMask.GetMask("Unit");
-        selected = GameObject.FindGameObjectWithTag("SelectedUnit");
     }
 
     void Update() {
@@ -27,18 +31,25 @@ public class UnitSelectionManager : MonoBehaviour {
             releaseSelectionBox();
         }
 
+        // Must be after mouseButtonUp, hence the redundancy
         if (Input.GetMouseButton(0)) {
             updateSelectionBox(Input.mousePosition);
         }
-
-        removeOutlinesFromUnselected();
     }
 
-    private bool unitInSelectionBox(Vector2 position, Bounds bounds) {
+    /*
+        Called by the Ship class on awake
+    */
+    public void registerShip(Ship ship) {
+        allUnits.Add(ship);
+        ship.Outline.SetColor(factionColors[ship.faction]);
+    }
+
+    private bool inSelection(Vector2 position, Bounds bounds) {
         return position.x > bounds.min.x && position.x < bounds.max.x && position.y > bounds.min.y && position.y < bounds.max.y;
     }
 
-    void updateSelectionBox(Vector2 mousePosition) {
+    private void updateSelectionBox(Vector2 mousePosition) {
         if (!selectionBox.gameObject.activeInHierarchy) {
             selectionBox.gameObject.SetActive(true);
         }
@@ -51,60 +62,64 @@ public class UnitSelectionManager : MonoBehaviour {
 
         Bounds bounds = new Bounds(selectionBox.anchoredPosition, selectionBox.sizeDelta);
 
-        GameObject[] units = GameObject.FindGameObjectsWithTag("selectableUnit");
-        foreach (GameObject u in units) {
-            if (unitInSelectionBox(Camera.main.WorldToScreenPoint(u.transform.position), bounds)) {
-                u.gameObject.GetComponent<Outline>().enabled = true;
-                u.gameObject.tag = "SelectedUnit";
-                //Debug.Log("Unit in selection box");
+        foreach (Ship ship in allUnits) {
+            if (inSelection(Camera.main.WorldToScreenPoint(ship.transform.position), bounds)) {
+                ship.Outline.enabled = true;
+                ship.tag = "SelectedUnit";
+                selectedUnits.Add(ship);
             } else {
-                u.gameObject.GetComponent<Outline>().enabled = false;
-                //
-                u.gameObject.tag = "selectableUnit";
-                //Debug.Log("Unit not in selection box");
+                // Only unselect the ship if it wasn't selected this frame
+                if (ship.selectedByClick) continue;
+
+                ship.Outline.enabled = false;
+                ship.tag = "selectableUnit";
+                selectedUnits.Remove(ship);
             }
         }
     }
 
-    void releaseSelectionBox() {
+    private void releaseSelectionBox() {
         selectionBox.gameObject.SetActive(false);
-
-        Vector2 min = selectionBox.anchoredPosition - (selectionBox.sizeDelta / 2);
-        Vector2 max = selectionBox.anchoredPosition + (selectionBox.sizeDelta / 2);
     }
 
-    void selectUnit() {
-        Transform underMouse = GetClickedGameObject();
+    private void selectUnit() {
+        Transform unit = getClicked();
 
-        if (underMouse != null) {
-            // If the player selected a unit
-            if (selected != null) {
-                // Disable selection of last selected unit
-                selected.gameObject.tag = "selectableUnit";
-                selected.gameObject.GetComponent<Outline>().enabled = false;
-            }
+        if (unit != null) {
+            Ship ship = unit.parent.gameObject.GetComponent<Ship>();
 
-            // Enable selection of unit that was clicked on
-            selected = underMouse.parent.transform.gameObject;
-            selected.gameObject.tag = "SelectedUnit";
-            selected.gameObject.GetComponent<Outline>().enabled = true;
-        } else {
-            // The player clicked away from the unit, so unselect it
-            if (selected != null) {
-                selected.gameObject.tag = "selectableUnit";
-                selected.gameObject.GetComponent<Outline>().enabled = false;
+            if (ship != null) {
+                if (!selectedUnits.Contains(ship)) {
+                    if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) {
+                        clearSelection();
+                    }
+
+                    ship.tag = "SelectedUnit";
+                    ship.Outline.enabled = true;
+                    ship.selectedByClick = true;
+                    selectedUnits.Add(ship);
+                } else if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) {
+                    ship.tag = "selectableUnit";
+                    ship.Outline.enabled = false;
+                    ship.selectedByClick = false;
+                    selectedUnits.Remove(ship);
+                }
             }
+        } else if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) {
+            clearSelection();
         }
     }
 
-    void removeOutlinesFromUnselected() {
-        GameObject[] unselected = GameObject.FindGameObjectsWithTag("selectableUnit");
-        foreach (GameObject u in unselected) {
-            u.gameObject.GetComponent<Outline>().enabled = false;
+    private void clearSelection() {
+        foreach (Ship ship in selectedUnits) {
+            ship.tag = "selectableUnit";
+            ship.Outline.enabled = false;
+            ship.selectedByClick = false;
         }
+        selectedUnits.Clear();
     }
 
-    Transform GetClickedGameObject() {
+    Transform getClicked() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
