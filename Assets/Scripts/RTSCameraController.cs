@@ -111,11 +111,11 @@ public class RTSCameraController : MonoBehaviour {
         } else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)) {
             float keyDelta = 0;
             if (Input.GetKey(KeyCode.Q)) {
-                keyDelta = 0.5F;
+                keyDelta = 0.1f;
             }
 
             if (Input.GetKey(KeyCode.E)) {
-                keyDelta = -0.5F;
+                keyDelta = -0.1f;
             }
 
             // Scale input against the sensitivity setting and multiply that against the smoothing value.

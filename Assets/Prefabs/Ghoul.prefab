@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8520203054538222180}
   - component: {fileID: 6680155635857845965}
   - component: {fileID: 8370910706250315367}
-  - component: {fileID: 5560902325022196573}
   - component: {fileID: 1009969096131894627}
   m_Layer: 12
   m_Name: Ghoul
@@ -81,19 +80,6 @@ MonoBehaviour:
   health: 0
   selectedByClick: 0
   faction: 0
---- !u!114 &5560902325022196573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498023063095419739}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 904e6491269db944d944aa70ebc28007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 100
 --- !u!195 &1009969096131894627
 NavMeshAgent:
   m_ObjectHideFlags: 0
