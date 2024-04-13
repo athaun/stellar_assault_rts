@@ -1,70 +1,44 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
-using System.Collections.Generic;
 
-public class AiBehaviorMoving : MonoBehaviour
+public class ShipController : MonoBehaviour
 {
     private NavMeshAgent agent;
-
-    private GameObject selectedUnit;
-    private LayerMask unitMask;
+    public float rotationSpeed = 10f;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        unitMask = LayerMask.GetMask("Unit");
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Check if left mouse button is clicked
-        {
-            if (!IsPointerOverUIObject()) // Check if the click is not on a UI element
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Create ray from mouse position
-
-                if (Physics.Raycast(ray, out hit)) // Cast ray and check if it hits something
-                {
-                    if (hit.collider != null) // Ensure the ray hits a collider
-                    {
-                        if (hit.collider.CompareTag("SelectableUnit")) // Check if the hit object is a selectable unit
-                        {
-                            selectedUnit = hit.collider.gameObject; // Set the selected unit
-                        }
-                        else // If the hit object is not a selectable unit, move the agent
-                        {
-                            agent.destination = hit.point; // Set agent's destination to hit point
-                        }
-                    }
-                }
-            }
-        }
-
-        // If there's a selected unit, move it to the clicked position
-        if (selectedUnit != null && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)) // Left mouse button
         {
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Create ray from mouse position
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit)) // Cast ray and check if it hits something
+            if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider != null) // Ensure the ray hits a collider
+                if (hit.transform.CompareTag("BasePlane"))
                 {
-                    agent.destination = hit.point; // Set agent's destination to hit point
+                    RotateShip(hit.point); // Rotate ship towards the target direction first
+                    agent.SetDestination(hit.point); // Then set the destination
                 }
             }
         }
     }
 
-    // Function to check if the mouse pointer is over a UI element
-    private bool IsPointerOverUIObject()
+    void RotateShip(Vector3 targetPosition)
     {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
+        // Calculate the direction to the target
+        Vector3 targetDirection = (targetPosition - transform.position).normalized;
+
+        // Align the agent's rotation smoothly towards the target direction
+        if (targetDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
     }
 }

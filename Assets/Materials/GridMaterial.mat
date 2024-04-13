@@ -509,7 +509,7 @@ Material:
     - _GridColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
     - _GridColour: {r: 1, g: 1, b: 1, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
-    - _MousePosition: {r: 0.48868385, g: 0, b: 0.29047352, a: 0}
+    - _MousePosition: {r: 0.48623973, g: 0, b: 0.3043429, a: 0}
     - _ThicknessRemap0: {r: 0, g: 1, b: 0, a: 0}
     - _ThicknessRemap1: {r: 0, g: 1, b: 0, a: 0}
     - _ThicknessRemap2: {r: 0, g: 1, b: 0, a: 0}
