@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9b7b90916fe828240930030f56b8dc3b
+timeCreated: 1486720778
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/ParticleAdd.mat
+  uploadId: 162405

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 56a211c4a8245f04eae6eaf5fc02df49
+timeCreated: 1486711383
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/MuzzleFlashes/MuzzleFlashBlueFlame.prefab
+  uploadId: 162405

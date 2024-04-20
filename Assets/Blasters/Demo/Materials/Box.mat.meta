@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 32ab1deda322d0c4485865547d364f7d
+timeCreated: 1485543571
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/Box.mat
+  uploadId: 162405

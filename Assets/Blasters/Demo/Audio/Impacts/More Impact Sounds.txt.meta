@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 97a3eb55b0de0dd4280f4e13faf605d9
+timeCreated: 1487110263
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Audio/Impacts/More Impact Sounds.txt
+  uploadId: 162405

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aa3012ee17196004caa3b353e751f967
+timeCreated: 1485392347
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/Bullets/BulletBlueSparkle.prefab
+  uploadId: 162405

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 71a27bc497bb8544a92dcbcf4a6239a2
+timeCreated: 1486756754
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Scripts/BL_DemoRoundRobin.cs
+  uploadId: 162405

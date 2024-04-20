@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 33c21a0cc2f040049b2bee2c69addf18
+timeCreated: 1485553306
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/Shockwave.mat
+  uploadId: 162405

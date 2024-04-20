@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b6f6552416b8df747b61b477c3e09ff2
+timeCreated: 1486711383
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/MuzzleFlashes/MuzzleFlashPurpleOrbs.prefab
+  uploadId: 162405

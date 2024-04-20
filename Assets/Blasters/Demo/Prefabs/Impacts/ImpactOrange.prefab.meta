@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b3dff2fe00b54a242b6f2289383da0ec
+timeCreated: 1486712647
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/Impacts/ImpactOrange.prefab
+  uploadId: 162405
