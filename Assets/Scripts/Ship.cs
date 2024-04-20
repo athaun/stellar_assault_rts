@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
-    private UnitMover mover;
-    private Outline outline;
+    protected UnitMover mover;
+    protected Outline outline;
 
     public float maxHealth;
     public float health;

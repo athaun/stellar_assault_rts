@@ -1297,6 +1297,58 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &675965800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 675965801}
+  - component: {fileID: 675965802}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &675965801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675965800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769073593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675965802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675965800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe58736461fe6904da9570d8dd71471d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipPrefabs:
+  - {fileID: 4532498729790709373, guid: 7f0c875eadb078240b1c224e9d508850, type: 3}
+  - {fileID: 8370910706250315367, guid: 92a0cfa15bc5cb241a8eb2394164f7c7, type: 3}
+  - {fileID: 1374320373566867322, guid: 51822c45955c0124fac43eee0472c7ef, type: 3}
+  - {fileID: 3721540338601175686, guid: 56f2d947cddeba04ba5a153b55eca725, type: 3}
+  spaceStation: {fileID: 1552122979}
+  numberOfShips: 5
+  spawnRadius: 10
 --- !u!1 &714279086
 GameObject:
   m_ObjectHideFlags: 1
@@ -2047,6 +2099,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1338855352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1552122979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3721540338601175686, guid: 470bc606246b88947a079dbaca2b0cea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1338855352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1584111261
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 675965801}
   - {fileID: 1552122977}
   - {fileID: 1837008758}
   m_Father: {fileID: 0}
@@ -2882,7 +2947,7 @@ GameObject:
   - component: {fileID: 1997048267}
   - component: {fileID: 1997048266}
   m_Layer: 0
-  m_Name: Image
+  m_Name: selection box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

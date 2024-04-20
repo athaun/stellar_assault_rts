@@ -3,12 +3,7 @@ using UnityEngine.EventSystems;
 
 public class InstantiateShips : MonoBehaviour {
     public GameObject selectedShip;
-    // Start is called before the first frame update
-    void Start() {
 
-    }
-
-    // Update is called once per frame
     void Update() {
         if (selectedShip == null || EventSystem.current.IsPointerOverGameObject()) return;
         if (Input.GetMouseButtonDown(0)) {
