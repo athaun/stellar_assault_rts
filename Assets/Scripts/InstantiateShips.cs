@@ -10,7 +10,11 @@ public class InstantiateShips : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (selectedShip != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if (selectedShip == null || EventSystem.current.IsPointerOverGameObject()) return;
+        if (Input.GetMouseButtonDown(0)) {
+            selectedShip = null;
+        }
+        if (Input.GetMouseButtonDown(1)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {

@@ -291,7 +291,7 @@ MonoBehaviour:
   smoothing: 1
   cameraRotationSpeed: 10
   zoomSpeed: 300
-  minZoomDist: 6
+  minZoomDist: 10
   maxZoomDist: 20
 --- !u!4 &36387904
 Transform:
@@ -810,7 +810,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.9245283, g: 0.8946397, b: 0.8329477, a: 1}
-  m_Intensity: 11.98
+  m_Intensity: 6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -853,7 +853,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 10277
+  m_ColorTemperature: 8359
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 1.0701883e-29, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 11.98
+  m_Intensity: 6
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -1103,13 +1103,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594746596}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25392672, y: 0, z: 0, w: 0.96722347}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 36387904}
-  m_LocalEulerAnglesHint: {x: 29.42, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &594746600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628791532}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1379,7 +1379,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af0bb521c45277a418e2ffb49b7b97ae, type: 2}
+  - {fileID: -2813337366143557646, guid: e780994bec2fb9e4d9738560575b89a3, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1800,7 +1800,7 @@ PrefabInstance:
     - target: {fileID: 7498023061864116335, guid: 470bc606246b88947a079dbaca2b0cea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.500001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7498023061864116335, guid: 470bc606246b88947a079dbaca2b0cea,
         type: 3}
