@@ -31,12 +31,12 @@ public class EnemyShip : Ship {
 
         if (turret == null || spaceStation == null) return;
 
-
         if (Vector3.Distance(transform.position, spaceStation.transform.position) < 14) {
             turret.Fire();
             Mover.Agent.isStopped = true;
         } else {
             Mover.moveTo(spaceStation.transform.position);
+            Mover.Agent.isStopped = false;
         }
 
         turret.Aim(spaceStation.transform.position);
