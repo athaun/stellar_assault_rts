@@ -19,7 +19,7 @@ public class Ship : MonoBehaviour {
 
     void Start() {
         mover = GetComponent<UnitMover>();
-        outline = GetComponent<Outline>();
+        outline = GetComponentInChildren<Outline>();
 
         UnitSelectionManager managerInstance = FindFirstObjectByType<UnitSelectionManager>();
         if (managerInstance != null) {

@@ -29,7 +29,7 @@ public class EnemyShip : Ship {
     
         Outline.enabled = true;
 
-        if (turret == null) return;
+        if (turret == null || spaceStation == null) return;
 
 
         if (Vector3.Distance(transform.position, spaceStation.transform.position) < 14) {

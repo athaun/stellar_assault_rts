@@ -13203,7 +13203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7498023061864116335}
   - component: {fileID: 8520203054538222180}
-  - component: {fileID: 177468099662158895}
   - component: {fileID: 3721540338601175686}
   - component: {fileID: 6532899624931870726}
   m_Layer: 12
@@ -13244,19 +13243,6 @@ MonoBehaviour:
   defaultSpeed: 0.3
   rotationSpeed: 0.2
   closeToTarget: 0
---- !u!114 &177468099662158895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498023063095419739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enabled: 0
 --- !u!114 &3721540338601175686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13305,6 +13291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7498023063330041273}
   - component: {fileID: 7498023063330041272}
+  - component: {fileID: 1939380924317218642}
   m_Layer: 12
   m_Name: ship
   m_TagString: Untagged
@@ -13360,6 +13347,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1939380924317218642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498023063330041274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabled: 0
 --- !u!1 &7542824354832709997
 GameObject:
   m_ObjectHideFlags: 0
