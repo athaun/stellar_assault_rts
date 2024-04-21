@@ -7,6 +7,10 @@ public class UnitMover : MonoBehaviour {
 
     private NavMeshAgent agent;
 
+    public NavMeshAgent Agent {
+        get { return agent; }
+    }
+
     Vector3 newPosition;
     bool move = false;
 

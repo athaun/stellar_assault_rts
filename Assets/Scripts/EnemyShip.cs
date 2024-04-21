@@ -2,14 +2,16 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyShip : Ship {
-    private Ship spaceStation;
+    public Ship spaceStation;
     public Ship SpaceStation { get { return spaceStation; } set { spaceStation = value; } }
+
+    BL_Turret turret;
 
     public void Start () {
         faction = 1;
         
         mover = GetComponent<UnitMover>();
-        outline = GetComponent<Outline>();
+        outline = GetComponentInChildren<Outline>();
 
         UnitSelectionManager managerInstance = FindFirstObjectByType<UnitSelectionManager>();
         if (managerInstance != null) {
@@ -18,12 +20,25 @@ public class EnemyShip : Ship {
             Debug.LogError("UnitSelectionManager not found in the scene! Cannot register enemy ship.");
         }
 
+        turret = GetComponent<BL_Turret>();
+
         health = maxHealth;
     }
 
     void Update() {
-        Mover.moveTo(spaceStation.transform.position);
-
+    
         Outline.enabled = true;
+
+        if (turret == null) return;
+
+
+        if (Vector3.Distance(transform.position, spaceStation.transform.position) < 14) {
+            turret.Fire();
+            Mover.Agent.isStopped = true;
+        } else {
+            Mover.moveTo(spaceStation.transform.position);
+        }
+
+        turret.Aim(spaceStation.transform.position);
     }
 }
