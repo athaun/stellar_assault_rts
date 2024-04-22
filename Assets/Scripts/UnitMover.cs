@@ -71,7 +71,7 @@ public class UnitMover : MonoBehaviour {
         }
     }
 
-    private void rotateShip(Vector3 targetPosition) {
+    public void rotateShip(Vector3 targetPosition) {
         // Calculate the direction to the target
         Vector3 targetDirection = (targetPosition - transform.position).normalized;
 

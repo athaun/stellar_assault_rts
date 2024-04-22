@@ -19,7 +19,6 @@ public class ButtonManager : MonoBehaviour {
         TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.fontStyle = FontStyles.Bold;
 
-
         SelectedButton = button;
 
         foreach(InstantiateShips instantiateShip in instantiateShips)

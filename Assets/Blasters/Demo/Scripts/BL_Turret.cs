@@ -113,11 +113,12 @@ public class BL_Turret : MonoBehaviour {
         // If lock Y axis is set, reset the y axis to 0
         if (lockYAxis) _lookPos.y = 0;
 
+        // Removed because the ship movement handles rotation:
         // Use LookRotation to get the direction to aim at the target position _lookPos
-        Quaternion _rotation = Quaternion.LookRotation(_lookPos);
+        // Quaternion _rotation = Quaternion.LookRotation(_lookPos);
 
-        // Interpolate the rotation of the turrent based on the rotation speed variable
-        transform.rotation = Quaternion.Slerp(transform.rotation, _rotation, Time.deltaTime * rotationSpeed);
+        // // Interpolate the rotation of the turrent based on the rotation speed variable
+        // transform.rotation = Quaternion.Slerp(transform.rotation, _rotation, Time.deltaTime * rotationSpeed);
     }
 
     // public method to aim the turret at a target position
@@ -125,6 +126,7 @@ public class BL_Turret : MonoBehaviour {
     {
         // Set target to the new target position
         _target = _newTarget;
+        _target.y = 0.1f;
     }
 
     // Public method to fire the turret (call this from external scripts like Players or AI)

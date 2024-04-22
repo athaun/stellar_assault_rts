@@ -33,6 +33,7 @@ public class EnemyShip : Ship {
 
         if (Vector3.Distance(transform.position, spaceStation.transform.position) < 14) {
             turret.Fire();
+            Mover.rotateShip(spaceStation.transform.position);
             Mover.Agent.isStopped = true;
         } else {
             Mover.moveTo(spaceStation.transform.position);

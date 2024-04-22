@@ -1478,8 +1478,8 @@ MonoBehaviour:
   - {fileID: 1374320373566867322, guid: 51822c45955c0124fac43eee0472c7ef, type: 3}
   - {fileID: 3721540338601175686, guid: 56f2d947cddeba04ba5a153b55eca725, type: 3}
   spaceStation: {fileID: 1552122979}
-  numberOfShips: 5
-  spawnRadius: 10
+  numberOfShips: 30
+  spawnRadius: 60
 --- !u!1 &714279086
 GameObject:
   m_ObjectHideFlags: 1
