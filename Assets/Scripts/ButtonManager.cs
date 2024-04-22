@@ -10,17 +10,18 @@ public class ButtonManager : MonoBehaviour {
     public Button[] buttons;
     private Button SelectedButton;
 
-    // Start is called before the first frame update
     public void SelectButton(Button button) {
         if(SelectedButton == button) {
             DeselectButton();
             return;
         }
+
         if (SelectedButton != null)
         {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
             selectedButtonText.fontStyle = FontStyles.Normal;
         }
+
         TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.fontStyle = FontStyles.Bold;
 
@@ -30,9 +31,8 @@ public class ButtonManager : MonoBehaviour {
         {
             instantiateShip.enabled = false;
         }
-        button.GetComponentInChildren<InstantiateShips>().enabled = true;
 
-        //Debug.Log(button.name);
+        button.GetComponentInChildren<InstantiateShips>().enabled = true;
     }
 
     public void DeselectButton() {
@@ -46,6 +46,7 @@ public class ButtonManager : MonoBehaviour {
             }
             SelectedButton = null;
         }
+        Debug.Log("FN CALLED ANYWAYS");
     }
 
     void Start() {
@@ -53,7 +54,6 @@ public class ButtonManager : MonoBehaviour {
             instantiateShips.Add(button.GetComponentInChildren<InstantiateShips>());
             instantiateShips[instantiateShips.Count - 1].enabled = false;
             button.onClick.AddListener(() => {
-                //Debug.Log("BUTTON WAS CLICKED! " + button.name);
                 SelectButton(button);
             });
             
@@ -61,16 +61,17 @@ public class ButtonManager : MonoBehaviour {
         InstantiateShips.OnShipInstantiated += DeselectButton;
     }
 
-    // Update is called once per frame
     void OnDestroy() {
         InstantiateShips.OnShipInstantiated -= DeselectButton;
     }
+
     void Update() {
-        if(SelectedButton != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        if(SelectedButton != null && Input.GetMouseButtonDown(0)) {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
             pointerData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerData, results);
+
             if(results.Count > 0)
             {
                 foreach(RaycastResult result in results)
@@ -81,7 +82,11 @@ public class ButtonManager : MonoBehaviour {
                     }
                 }
             }
-            DeselectButton();
+            // if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+            // {
+            //     DeselectButton();
+            //     Debug.Log("IF CALLED");
+            // }
         }
     }
 }
