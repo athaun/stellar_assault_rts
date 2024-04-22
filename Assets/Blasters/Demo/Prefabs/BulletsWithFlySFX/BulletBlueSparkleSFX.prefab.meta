@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 059d840a0cb0d8f4b9d40e5e52a2d959
+timeCreated: 1485392347
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/BulletsWithFlySFX/BulletBlueSparkleSFX.prefab
+  uploadId: 162405

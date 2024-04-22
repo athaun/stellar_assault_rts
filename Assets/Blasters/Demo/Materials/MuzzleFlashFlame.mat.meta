@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 96df9e187cd00d14dbf57f9bab13ef2a
+timeCreated: 1485440668
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/MuzzleFlashFlame.mat
+  uploadId: 162405

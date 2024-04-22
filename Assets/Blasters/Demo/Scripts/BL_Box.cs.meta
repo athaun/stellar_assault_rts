@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0cd883e2198476e4e9c2ebd7d9cae1be
+timeCreated: 1485545915
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Scripts/BL_Box.cs
+  uploadId: 162405

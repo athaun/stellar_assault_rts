@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c7cbe2f45f13ec47ab6af155232b1ce
+timeCreated: 1485555541
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/SmokeAlpha.mat
+  uploadId: 162405

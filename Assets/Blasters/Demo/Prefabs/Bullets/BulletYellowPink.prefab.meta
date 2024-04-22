@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e469fc5f91b45e41bc0d0fad74a7fe1
+timeCreated: 1485391777
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/Bullets/BulletYellowPink.prefab
+  uploadId: 162405

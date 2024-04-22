@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b51baabf76bdfb244bfa9e4483c06239
+timeCreated: 1486712647
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/Impacts/ImpactRed.prefab
+  uploadId: 162405

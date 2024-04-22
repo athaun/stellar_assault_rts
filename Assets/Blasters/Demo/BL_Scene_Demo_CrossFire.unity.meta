@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1bd53d2bec36b0d46b11fcf9a2f3c209
+timeCreated: 1486741056
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/BL_Scene_Demo_CrossFire.unity
+  uploadId: 162405

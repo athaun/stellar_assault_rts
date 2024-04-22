@@ -28,6 +28,9 @@ public class RTSCameraController : MonoBehaviour {
     public float minZoomDist;
     public float maxZoomDist;
 
+    // private bool moveToUnit = false;
+    // private Vector3 unitPos = Vector3.positiveInfinity;
+
     private void awake() {
         cam = Camera.main;
     }
@@ -38,50 +41,54 @@ public class RTSCameraController : MonoBehaviour {
         rotate();
     }
 
-    private bool moveToUnit = false;
 
     void move() {
         float xInput = Input.GetAxis("Horizontal");
         float zInput = Input.GetAxis("Vertical");
 
+        // TODO: implement for final game, its buggy rn
+        // if (xInput != 0 || zInput != 0) {
+        //     moveToUnit = false;
+        // }
+
+        // if (Input.GetKey(KeyCode.Space)) {
+        //     moveToUnit = true;
+        // }
+
+        // if (moveToUnit) {
+        //     unitPos = GameObject.FindGameObjectWithTag("UnitController").GetComponent<UnitController>().getSelectedUnitPosition();
+        //         transform.position = Vector3.Lerp(transform.position, unitPos, Time.deltaTime * movementSpeed);
+        //         if (Vector3.Distance(unitPos, transform.position) < 0.01) {
+        //             moveToUnit = false;
+        //             unitPos = Vector3.positiveInfinity;
+        //         }
+            
+        // }
+
         Vector3 direction = transform.forward * zInput + transform.right * xInput;
 
-        // transform.position += direction * movementSpeed * Time.deltaTime;
         transform.position = Vector3.Lerp(transform.position, transform.position + direction, Time.deltaTime * movementSpeed);
-
-        if (Input.GetKey(KeyCode.Space)) {
-            moveToUnit = true;
-        }
-        if (moveToUnit) {
-            Vector3 unitPos = GameObject.FindGameObjectWithTag("UnitController").GetComponent<UnitController>().getSelectedUnitPosition();
-            if (unitPos != null) {
-                transform.position = Vector3.Lerp(transform.position, unitPos, Time.deltaTime * movementSpeed);
-                if (Vector3.Distance(unitPos, transform.position) < 0.01) {
-                    moveToUnit = false;
-                }
-            }
-        }
     }
 
 
     void zoom() {
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+        Vector3 direction = (transform.position - cam.transform.position).normalized;
         float distance = Vector3.Distance(transform.position, cam.transform.position);
 
         if (distance < minZoomDist && scrollInput > 0.0f || distance > maxZoomDist && scrollInput < 0.0f) {
             return;
         }
 
-        cam.transform.position += cam.transform.forward * scrollInput * zoomSpeed * Time.deltaTime;
+        cam.transform.position += direction * scrollInput * zoomSpeed * Time.deltaTime;
 
         // Clamp the camera position to be within the min and max distance
         distance = Vector3.Distance(transform.position, cam.transform.position);
         if (distance < minZoomDist) {
-            cam.transform.position = transform.position + (cam.transform.position - transform.position).normalized * minZoomDist;
+            cam.transform.position = transform.position - direction * minZoomDist;
         } else if (distance > maxZoomDist) {
-            cam.transform.position = transform.position + (cam.transform.position - transform.position).normalized * maxZoomDist;
+            cam.transform.position = transform.position - direction * maxZoomDist;
         }
-
     }
 
 

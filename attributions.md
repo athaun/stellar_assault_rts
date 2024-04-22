@@ -1,4 +1,6 @@
 - Unit models: Arsdor, used with permission
 - HDRI Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633
 - Unit selection shader: 
-- Music: ApproachingNirvana, https://youtu.be/3xobfvgMrWo
+- Music: ApproachingNirvana, Attr. https://youtu.be/3xobfvgMrWo
+- SpaceStation Model: Helindu, CC Attr. https://sketchfab.com/3d-models/sci-fi-space-station-f6b9106fffc64fec93cabc17492cb2e4 
+- Blasters package: https://assetstore.unity.com/packages/audio/sound-fx/weapons/blasters-small-83107

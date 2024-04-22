@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f6a119882e32c6f49a2bf3e19a294009
+timeCreated: 1485387999
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/Ground.mat
+  uploadId: 162405

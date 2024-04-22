@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
-    private UnitMover mover;
-    private Outline outline;
+    protected UnitMover mover;
+    protected Outline outline;
 
     public float maxHealth;
     public float health;
@@ -19,7 +19,7 @@ public class Ship : MonoBehaviour {
 
     void Start() {
         mover = GetComponent<UnitMover>();
-        outline = GetComponent<Outline>();
+        outline = GetComponentInChildren<Outline>();
 
         UnitSelectionManager managerInstance = FindFirstObjectByType<UnitSelectionManager>();
         if (managerInstance != null) {
