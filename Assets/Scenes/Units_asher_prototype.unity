@@ -174,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedShip: {fileID: 7498023063095419739, guid: 51822c45955c0124fac43eee0472c7ef,
     type: 3}
+  buttonManager: {fileID: 0}
 --- !u!114 &20231920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,6 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedShip: {fileID: 7498023063095419739, guid: 56f2d947cddeba04ba5a153b55eca725,
     type: 3}
+  buttonManager: {fileID: 0}
 --- !u!114 &158210337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,89 +1579,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1006692585
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1769073593}
-    m_Modifications:
-    - target: {fileID: 10673339286696191, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 10673339286696191, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: spaceStation
-      value: 
-      objectReference: {fileID: 1552122979}
-    - target: {fileID: 4532498729790709373, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.504394
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15060093
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -32.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498023063095419739, guid: 7f0c875eadb078240b1c224e9d508850,
-        type: 3}
-      propertyPath: m_Name
-      value: TEST ENEMY - Banshee
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7f0c875eadb078240b1c224e9d508850, type: 3}
 --- !u!850595691 &1175652329
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1990,6 +1909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedShip: {fileID: 7498023063095419739, guid: 92a0cfa15bc5cb241a8eb2394164f7c7,
     type: 3}
+  buttonManager: {fileID: 0}
 --- !u!114 &1358202530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2317,12 +2237,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1595774143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1484459713 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7498023061864116335, guid: 7f0c875eadb078240b1c224e9d508850,
-    type: 3}
-  m_PrefabInstance: {fileID: 1006692585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1552122977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7498023061864116335, guid: 470bc606246b88947a079dbaca2b0cea,
@@ -2395,6 +2309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedShip: {fileID: 7498023063095419739, guid: 7f0c875eadb078240b1c224e9d508850,
     type: 3}
+  buttonManager: {fileID: 0}
 --- !u!114 &1584111264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2723,7 +2638,6 @@ Transform:
   - {fileID: 675965801}
   - {fileID: 1552122977}
   - {fileID: 1837008758}
-  - {fileID: 1484459713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824010538
