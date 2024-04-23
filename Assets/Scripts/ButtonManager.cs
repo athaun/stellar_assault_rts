@@ -65,6 +65,8 @@ public class ButtonManager : MonoBehaviour {
         InstantiateShips.OnShipInstantiated -= DeselectButton;
     }
 
+    //Asher dont touch this.
+    //Asher this is to make it so that when you left click (On the UI) it will deselect the button.
     void Update() {
         if(SelectedButton != null && Input.GetMouseButtonDown(0)) {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
@@ -81,12 +83,8 @@ public class ButtonManager : MonoBehaviour {
                         return;
                     }
                 }
+                DeselectButton();
             }
-            // if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
-            // {
-            //     DeselectButton();
-            //     Debug.Log("IF CALLED");
-            // }
         }
     }
 }

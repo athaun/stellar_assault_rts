@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InstantiateShips : MonoBehaviour {
+    [SerializeField] private Economy economy;
     public static event Action OnShipInstantiated;
     public GameObject selectedShip;
 
@@ -22,7 +23,12 @@ public class InstantiateShips : MonoBehaviour {
                 if (hit.collider.tag == "BasePlane") {
                     Vector3 position = hit.point;
                     position.y = 0.01f;
+                    if(economy.Scrap < selectedShip.GetComponent<Ship>().ScrapCost) {
+                        Debug.Log("Not enough scrap to build this ship");
+                        return;
+                    }
                     Instantiate(selectedShip, position, Quaternion.identity);
+                    economy.UseScrap(selectedShip.GetComponent<Ship>().ScrapCost);
                     OnShipInstantiated?.Invoke();
                 }
             }
