@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
+    [SerializeField]private int scrapCost;
+    [SerializeField]private int electricityConsumption;
+    [SerializeField]private int electricityGeneration;
+
+    public int ScrapCost { get => scrapCost; set => scrapCost = value; }
+    public int ElectricityConsumption { get => electricityConsumption; set => electricityConsumption = value; }
+    public int ElectricityGeneration { get => electricityGeneration; set => electricityGeneration = value; }
     protected UnitMover mover;
     protected Outline outline;
 

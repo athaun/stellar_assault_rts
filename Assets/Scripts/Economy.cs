@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
+    private int netElectricity;
     [SerializeField] private int scrap = 0;
     [SerializeField] private int electricity = 0;
 
     public int Scrap { get => scrap; set => scrap = value; }
     public int Electricity { get => electricity; set => electricity = value; }
+
+    public int NetElectricity { get => netElectricity; set => netElectricity = value; }
 
     // Start is called before the first frame update
     //scrap Functions
@@ -38,6 +41,7 @@ public class Economy : MonoBehaviour
     }
     IEnumerator ConsumeElectricity(int amount, bool isActive)
     {
+        netElectricity -= amount;
         while(isActive)
         {
             yield return new WaitForSeconds(1);
@@ -46,6 +50,7 @@ public class Economy : MonoBehaviour
     }
     IEnumerator GenerateElectricity(int amount, bool isActive)
     {
+        netElectricity += amount;
         while(isActive)
         {
             yield return new WaitForSeconds(1);
