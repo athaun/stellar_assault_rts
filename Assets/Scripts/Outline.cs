@@ -40,7 +40,7 @@ public class Outline : MonoBehaviour {
     }
 
     void SetLayerRecursively(GameObject obj, int newLayer) {
-        if (null == obj) return;
+        if (null == obj || obj.CompareTag("no_outline")) return;
 
         obj.layer = newLayer;
 

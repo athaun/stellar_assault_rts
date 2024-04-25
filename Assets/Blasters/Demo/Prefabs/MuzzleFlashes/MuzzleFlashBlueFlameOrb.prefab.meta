@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e24c2d0fd212e3040986843b7e769ab8
+timeCreated: 1486711383
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/MuzzleFlashes/MuzzleFlashBlueFlameOrb.prefab
+  uploadId: 162405

@@ -37,7 +37,9 @@ public class UnitController : MonoBehaviour {
     }
 
     public Vector3 getSelectedUnitPosition() {
-        // TODO: Later make this return the center of the group of selected units. Or, remove (probably this)
+        if (units.SelectedUnits.Count == 0) {
+            return Vector3.positiveInfinity;
+        }
         return units.SelectedUnits[0].transform.position;
     }
 

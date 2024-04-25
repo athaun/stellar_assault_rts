@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5d0ddfc10e065e44aa41f2678a67502f
+timeCreated: 1487175664
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/Turrets/TurretObject.prefab
+  uploadId: 162405

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f71a1a3ede4d22d4caeb446caff44516
+timeCreated: 1486713025
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Scripts/BL_Impact.cs
+  uploadId: 162405

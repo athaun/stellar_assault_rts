@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ButtonManager : MonoBehaviour {
     private List<InstantiateShips> instantiateShips = new List<InstantiateShips>();
     public Button[] buttons;
     private Button SelectedButton;
 
-    // Start is called before the first frame update
     public void SelectButton(Button button) {
         if(SelectedButton == button) {
             DeselectButton();
@@ -20,9 +20,9 @@ public class ButtonManager : MonoBehaviour {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
             selectedButtonText.fontStyle = FontStyles.Normal;
         }
+
         TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.fontStyle = FontStyles.Bold;
-
 
         SelectedButton = button;
 
@@ -30,9 +30,8 @@ public class ButtonManager : MonoBehaviour {
         {
             instantiateShip.enabled = false;
         }
-        button.GetComponentInChildren<InstantiateShips>().enabled = true;
 
-        //Debug.Log(button.name);
+        button.GetComponentInChildren<InstantiateShips>().enabled = true;
     }
 
     public void DeselectButton() {
@@ -53,7 +52,6 @@ public class ButtonManager : MonoBehaviour {
             instantiateShips.Add(button.GetComponentInChildren<InstantiateShips>());
             instantiateShips[instantiateShips.Count - 1].enabled = false;
             button.onClick.AddListener(() => {
-                //Debug.Log("BUTTON WAS CLICKED! " + button.name);
                 SelectButton(button);
             });
             
@@ -61,11 +59,31 @@ public class ButtonManager : MonoBehaviour {
         InstantiateShips.OnShipInstantiated += DeselectButton;
     }
 
-    // Update is called once per frame
     void OnDestroy() {
         InstantiateShips.OnShipInstantiated -= DeselectButton;
     }
+
+    // Asher dont touch this.
+    // Asher this is to make it so that when you left click (On the UI) it will deselect the button.
+    // ok
     void Update() {
- 
+        if(SelectedButton != null && Input.GetMouseButtonDown(0)) {
+            PointerEventData pointerData = new PointerEventData(EventSystem.current);
+            pointerData.position = Input.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, results);
+
+            if(results.Count > 0)
+            {
+                foreach(RaycastResult result in results)
+                {
+                    if(result.gameObject.GetComponent<Button>() != null)
+                    {
+                        return;
+                    }
+                }
+                DeselectButton();
+            }
+        }
     }
 }

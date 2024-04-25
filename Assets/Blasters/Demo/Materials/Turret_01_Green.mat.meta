@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 611269fe82741d946aae60f8d5b22bc6
+timeCreated: 1485355167
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Materials/Turret_01_Green.mat
+  uploadId: 162405

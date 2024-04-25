@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 91e957de622876c4dbcb4181df592b5a
+timeCreated: 1487175391
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/3D/Materials/Material.mat
+  uploadId: 162405

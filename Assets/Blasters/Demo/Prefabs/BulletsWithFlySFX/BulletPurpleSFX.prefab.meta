@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 84a288832bf28974dab1f0fc5b603519
+timeCreated: 1485383448
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 83107
+  packageName: Blasters Small
+  packageVersion: 1.0
+  assetPath: Assets/Blasters/Demo/Prefabs/BulletsWithFlySFX/BulletPurpleSFX.prefab
+  uploadId: 162405

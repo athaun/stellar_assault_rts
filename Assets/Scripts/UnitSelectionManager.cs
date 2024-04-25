@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UnitSelectionManager : MonoBehaviour {
 
-    private List<Ship> allUnits = new List<Ship>();
+    private List<Ship> units = new List<Ship>();
     private List<Ship> selectedUnits = new List<Ship>();
+    private List<EnemyShip> enemyUnits = new List<EnemyShip>();
 
-    public List<Ship> AllUnits { get { return allUnits; } }
+    public List<Ship> Units { get { return units; } }
     public List<Ship> SelectedUnits { get { return selectedUnits; } }
 
     public Color[] factionColors;
@@ -41,7 +42,12 @@ public class UnitSelectionManager : MonoBehaviour {
         Called by the Ship class on awake
     */
     public void registerShip(Ship ship) {
-        allUnits.Add(ship);
+        units.Add(ship);
+        ship.Outline.SetColor(factionColors[ship.faction]);
+    }
+
+    public void registerEnemy(EnemyShip ship) {
+        enemyUnits.Add(ship);
         ship.Outline.SetColor(factionColors[ship.faction]);
     }
 
@@ -62,7 +68,7 @@ public class UnitSelectionManager : MonoBehaviour {
 
         Bounds bounds = new Bounds(selectionBox.anchoredPosition, selectionBox.sizeDelta);
 
-        foreach (Ship ship in allUnits) {
+        foreach (Ship ship in units) {
             if (inSelection(Camera.main.WorldToScreenPoint(ship.transform.position), bounds)) {
                 ship.Outline.enabled = true;
                 ship.tag = "SelectedUnit";

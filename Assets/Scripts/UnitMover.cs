@@ -7,6 +7,10 @@ public class UnitMover : MonoBehaviour {
 
     private NavMeshAgent agent;
 
+    public NavMeshAgent Agent {
+        get { return agent; }
+    }
+
     Vector3 newPosition;
     bool move = false;
 
@@ -67,7 +71,7 @@ public class UnitMover : MonoBehaviour {
         }
     }
 
-    private void rotateShip(Vector3 targetPosition) {
+    public void rotateShip(Vector3 targetPosition) {
         // Calculate the direction to the target
         Vector3 targetDirection = (targetPosition - transform.position).normalized;
 
