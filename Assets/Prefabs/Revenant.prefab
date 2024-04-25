@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 0
+  scrapGeneration: 0
   scrapCost: 150
   electricityConsumption: 25
   electricityGeneration: 0
@@ -86,6 +87,11 @@ MonoBehaviour:
     type: 3}
   e_impactPrefab: {fileID: 1465047856855714, guid: b51baabf76bdfb244bfa9e4483c06239,
     type: 3}
+  explosionPrefab: {fileID: 1036410813808012, guid: d259e158f02233a4aba5f6d49c930ae5,
+    type: 3}
+  isActiveElectricityGeneration: 0
+  isActiveElectricityConsumption: 1
+  isActiveScrapGeneration: 0
   selectedByClick: 0
 --- !u!114 &3336440727344295129
 MonoBehaviour:
@@ -100,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 1
+  scrapGeneration: 0
   scrapCost: 0
   electricityConsumption: 0
   electricityGeneration: 0
@@ -114,6 +121,10 @@ MonoBehaviour:
   e_muzzleFlashPrefab: {fileID: 0}
   e_bulletPrefab: {fileID: 0}
   e_impactPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  isActiveElectricityGeneration: 0
+  isActiveElectricityConsumption: 1
+  isActiveScrapGeneration: 0
   selectedByClick: 0
   spaceStation: {fileID: 0}
 --- !u!195 &6532899624931870726

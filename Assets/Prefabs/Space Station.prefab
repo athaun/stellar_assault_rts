@@ -13262,7 +13262,7 @@ MonoBehaviour:
   scrapCost: 1000000
   electricityConsumption: 125
   electricityGeneration: 200
-  maxHealth: 0
+  maxHealth: 1000
   isPassive: 1
   attackDamage: 0
   awarenessRange: 0
@@ -13273,6 +13273,8 @@ MonoBehaviour:
   e_muzzleFlashPrefab: {fileID: 0}
   e_bulletPrefab: {fileID: 0}
   e_impactPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 1036410813808012, guid: d259e158f02233a4aba5f6d49c930ae5,
+    type: 3}
   isActiveElectricityGeneration: 1
   isActiveElectricityConsumption: 1
   isActiveScrapGeneration: 1
@@ -13305,6 +13307,7 @@ MonoBehaviour:
   e_muzzleFlashPrefab: {fileID: 0}
   e_bulletPrefab: {fileID: 0}
   e_impactPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 0}
   isActiveElectricityGeneration: 0
   isActiveElectricityConsumption: 1
   isActiveScrapGeneration: 0

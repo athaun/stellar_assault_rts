@@ -124,6 +124,12 @@ public class BL_Bullet : MonoBehaviour {
             // second argument which is currently set to null.
             _targetGameObject.SendMessage("Hit", null, SendMessageOptions.DontRequireReceiver);
 
+            Ship target = _targetGameObject.GetComponentInParent<Ship>();
+            Debug.Log(target);
+            if (target != null) {
+                target.Hit();
+            }
+
             // The bullet has hit so we should stop the particle system and trail renderers from emitting any more particles.
             _particleSystem.Stop();            
             _trailRenderer.Clear();

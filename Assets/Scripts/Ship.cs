@@ -33,6 +33,8 @@ public class Ship : MonoBehaviour {
     [SerializeField] protected GameObject e_bulletPrefab;
     [SerializeField] protected GameObject e_impactPrefab;
 
+    [SerializeField] protected GameObject explosionPrefab;
+
     private bool moveOrders = false;
 
     [SerializeField] private bool isActiveElectricityGeneration = false;
@@ -140,8 +142,13 @@ public class Ship : MonoBehaviour {
             isActiveElectricityGeneration = false;
             isActiveElectricityConsumption = false;
             isActiveScrapGeneration = false;
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+
+    public void Hit() {
+        TakeDamage(10);
     }
 
     public void addSelectedTarget(Ship target) {
