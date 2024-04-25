@@ -126,7 +126,7 @@ public class BL_Turret : MonoBehaviour {
     {
         // Set target to the new target position
         _target = _newTarget;
-        _target.y = 0.1f;
+        _target.y = 0.7f;
     }
 
     // Public method to fire the turret (call this from external scripts like Players or AI)

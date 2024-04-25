@@ -13262,7 +13262,10 @@ MonoBehaviour:
   electricityGeneration: 0
   maxHealth: 0
   health: 0
+  isPassive: 1
   attackDamage: 0
+  awarenessRange: 0
+  attackRange: 0
   faction: 0
   selectedByClick: 0
 --- !u!114 &8675926461457713420
@@ -13282,7 +13285,10 @@ MonoBehaviour:
   electricityGeneration: 0
   maxHealth: 0
   health: 0
+  isPassive: 0
   attackDamage: 0
+  awarenessRange: 0
+  attackRange: 0
   faction: 1
   selectedByClick: 0
   spaceStation: {fileID: 0}

@@ -77,6 +77,13 @@ public class ButtonManager : MonoBehaviour {
             {
                 foreach(RaycastResult result in results)
                 {
+                    // Skip any GameObjects with colliders that we want to ignore
+                    Collider collider = result.gameObject.GetComponent<Collider>();
+                    if(collider != null && collider.gameObject.layer == LayerMask.NameToLayer("Awareness"))
+                    {
+                        continue;
+                    }
+
                     if(result.gameObject.GetComponent<Button>() != null)
                     {
                         return;

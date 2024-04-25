@@ -85,6 +85,12 @@ public class BL_Bullet : MonoBehaviour {
             // Get the target (hit) collider
             Collider _target = _hit.collider;
 
+            // Ignore if the layer is an awareness collider
+            if (_target.gameObject.layer == LayerMask.NameToLayer("Awareness"))
+            {
+                return;
+            }
+
             // Calculate the incoming vector (hit point minus bullets position since we are not quite yet at the target, only the raycast
             // has detected the hit.
             Vector3 _incomingVec = _hit.point - _transform.position; 

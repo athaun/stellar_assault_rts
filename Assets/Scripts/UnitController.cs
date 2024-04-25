@@ -107,8 +107,14 @@ public class UnitController : MonoBehaviour {
         // Initialize a variable to store the hit position of the raycast
         RaycastHit hitPosition;
 
+        // Get the layer mask for the "Awareness" layer
+        int awarenessLayer = LayerMask.NameToLayer("Awareness");
+
+        // Create a layer mask that includes all layers except the "Awareness" layer
+        int layerMask = ~(1 << awarenessLayer);
+
         // If a raycast from the mouse world position in the direction of the camera's forward vector hits something
-        if (Physics.Raycast(mouseWorldPosition, mainCamera.transform.forward, out hitPosition, 100, groundLayer)) {
+        if (Physics.Raycast(mouseWorldPosition, mainCamera.transform.forward, out hitPosition, 100, layerMask)) {
             // Return the point of the hit
             return hitPosition.point;
         } else {

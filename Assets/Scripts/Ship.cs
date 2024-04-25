@@ -4,6 +4,8 @@ using UnityEngine;
 public class Ship : MonoBehaviour {
 
     // Ship stats
+    public int faction;
+
     [Header("Cost")]
     [SerializeField] private int scrapCost;
     [SerializeField] private int electricityConsumption;
@@ -16,10 +18,9 @@ public class Ship : MonoBehaviour {
     [Header("Combat")]
     [SerializeField] protected bool isPassive;
     [SerializeField] protected int attackDamage;
-    [SerializeField] protected int awarenessRange;
-    [SerializeField] protected float attackRange;
+    [SerializeField] protected int awarenessRange = 20;
+    [SerializeField] protected float attackRange = 14;
 
-    public int faction;
 
     public int ScrapCost { get => scrapCost; set => scrapCost = value; }
     public int ElectricityConsumption { get => electricityConsumption; set => electricityConsumption = value; }
@@ -42,11 +43,10 @@ public class Ship : MonoBehaviour {
     protected BL_Turret turret;
 
     public List<Ship> Targets { get => targets; }
-    public List<Ship> SelectedTargets { get => selectedTargets; set => selectedTargets = value; }
+    public List<Ship> PlayerSelectedTargets { get => selectedTargets; set => selectedTargets = value; }
     
     // Prevents reset from deselection if outside selection box
     [HideInInspector] public bool selectedByClick = false; 
-
 
     void Start() {
         mover = GetComponent<UnitMover>();
@@ -65,13 +65,21 @@ public class Ship : MonoBehaviour {
         awarenessCollider = gameObject.AddComponent<SphereCollider>();
         awarenessCollider.radius = awarenessRange;
         awarenessCollider.isTrigger = true;
+        awarenessCollider.gameObject.layer = LayerMask.NameToLayer("Awareness");
 
         turret = GetComponent<BL_Turret>();
         isPassive = (turret == null); // If the ship has no turret, make it passive
+
+        targets = new List<Ship>();
+        selectedTargets = new List<Ship>();
     }
 
     void Update() {
-
+        if (selectedTargets.Count > 0) {
+            Attack(selectedTargets[0]);
+        } else if (targets.Count > 0) {
+            Attack(targets[0]);
+        }
     }
 
     public void TakeDamage(int damage) {
@@ -82,29 +90,30 @@ public class Ship : MonoBehaviour {
         if (health <= 0) {
             Destroy(gameObject);
         }
-
-        if (targets.Count > 0 && !isPassive) {
-            Attack(targets[0]);            
-        }
     }
 
-    private void Attack(Ship target) {
+    protected void Attack(Ship target) {
         // If the target is null, return
-        if (target == null) return;
+        if (target == null || isPassive) return;
+
+        // turret.Aim(target.transform.position);
 
         // If the target is not in range, move towards it
-        if (Vector3.Distance(transform.position, target.transform.position) > attackRange) {
-            mover.moveTo(target.transform.position);
-        } else {
+        if (Vector3.Distance(transform.position, target.transform.position) < attackRange) {
             // If the target is in range, attack it
-            target.TakeDamage(attackDamage);
+            turret.Fire();
+            Mover.rotateShip(target.transform.position);
+            Mover.Agent.isStopped = true;
+        } else {
+            mover.moveTo(target.transform.position);
+            mover.Agent.isStopped = false;
         }
     }
 
     void OnTriggerEnter(Collider other) {
         // If the collider is a ship, add it to the list of targets
         Ship target = other.GetComponent<Ship>();
-        if (target != null) {
+        if (target != null && target.faction != faction) {
             targets.Add(target);
         }
     }
@@ -112,7 +121,7 @@ public class Ship : MonoBehaviour {
     void OnTriggerExit(Collider other) {
         // If the collider is a ship, remove it from the list of targets
         Ship target = other.GetComponent<Ship>();
-        if (target != null) {
+        if (target != null && target.faction != faction) {
             targets.Remove(target);
         }
     }

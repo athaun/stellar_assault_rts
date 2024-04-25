@@ -129,7 +129,10 @@ public class UnitSelectionManager : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, unitMask)) {
+        int awarenessLayer = LayerMask.NameToLayer("Awareness");
+        int layerMask = ~(1 << awarenessLayer);
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
             return hit.transform;
         } else {
             return null;
