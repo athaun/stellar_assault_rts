@@ -65,13 +65,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faction: 0
   scrapCost: 150
   electricityConsumption: 25
   electricityGeneration: 0
-  maxHealth: 0
-  health: 0
+  maxHealth: 100
+  isPassive: 0
+  attackDamage: 0
+  awarenessRange: 20
+  attackRange: 14
+  f_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 56a211c4a8245f04eae6eaf5fc02df49,
+    type: 3}
+  f_bulletPrefab: {fileID: 1452043023141516, guid: aa3012ee17196004caa3b353e751f967,
+    type: 3}
+  f_impactPrefab: {fileID: 1465047856855714, guid: e5c34e2d4c768b14b8f630dc94871324,
+    type: 3}
+  e_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 9466dbf4e29f37e438f4c041f5166045,
+    type: 3}
+  e_bulletPrefab: {fileID: 1452043023141516, guid: 4f5fa7040d56cbb49b77ccae6be4f3c0,
+    type: 3}
+  e_impactPrefab: {fileID: 1465047856855714, guid: b51baabf76bdfb244bfa9e4483c06239,
+    type: 3}
   selectedByClick: 0
-  faction: 0
 --- !u!114 &3336440727344295129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,13 +99,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6810f5e94b968346ab1f9227d63752c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faction: 1
   scrapCost: 0
   electricityConsumption: 0
   electricityGeneration: 0
   maxHealth: 0
-  health: 0
+  isPassive: 0
+  attackDamage: 0
+  awarenessRange: 20
+  attackRange: 14
+  f_muzzleFlashPrefab: {fileID: 0}
+  f_bulletPrefab: {fileID: 0}
+  f_impactPrefab: {fileID: 0}
+  e_muzzleFlashPrefab: {fileID: 0}
+  e_bulletPrefab: {fileID: 0}
+  e_impactPrefab: {fileID: 0}
   selectedByClick: 0
-  faction: 1
   spaceStation: {fileID: 0}
 --- !u!195 &6532899624931870726
 NavMeshAgent:

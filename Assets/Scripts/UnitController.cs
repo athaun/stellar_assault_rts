@@ -80,11 +80,13 @@ public class UnitController : MonoBehaviour {
 
             if (enemy != null) {
                 foreach (Ship s in units.SelectedUnits) {
+                    s.clearTargets();
                     s.addSelectedTarget(enemy);
                 }
             } else {
                 foreach (Ship s in units.SelectedUnits) {
-                    s.clearSelectedTargets();
+                    s.clearTargets();
+                    s.HasMoveOrders = true;
                 }
             }
         }
