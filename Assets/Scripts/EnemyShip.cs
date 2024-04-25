@@ -9,7 +9,7 @@ public class EnemyShip : Ship {
 
     public void Start () {
         faction = 1;
-        
+
         mover = GetComponent<UnitMover>();
         outline = GetComponentInChildren<Outline>();
 
