@@ -13262,7 +13262,7 @@ MonoBehaviour:
   scrapCost: 1000000
   electricityConsumption: 125
   electricityGeneration: 200
-  maxHealth: 1000
+  maxHealth: 20000
   isPassive: 1
   attackDamage: 0
   awarenessRange: 0
