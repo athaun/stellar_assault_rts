@@ -5,11 +5,9 @@ public class EnemyShip : Ship {
     public Ship spaceStation;
     public Ship SpaceStation { get { return spaceStation; } set { spaceStation = value; } }
 
-    BL_Turret turret;
-
     public void Start () {
         faction = 1;
-        
+
         mover = GetComponent<UnitMover>();
         outline = GetComponentInChildren<Outline>();
 
@@ -19,8 +17,6 @@ public class EnemyShip : Ship {
         } else {
             Debug.LogError("UnitSelectionManager not found in the scene! Cannot register enemy ship.");
         }
-
-        turret = GetComponent<BL_Turret>();
 
         health = maxHealth;
     }

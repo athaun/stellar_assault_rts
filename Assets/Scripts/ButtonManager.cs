@@ -46,7 +46,6 @@ public class ButtonManager : MonoBehaviour {
             }
             SelectedButton = null;
         }
-        Debug.Log("FN CALLED ANYWAYS");
     }
 
     void Start() {
@@ -65,8 +64,9 @@ public class ButtonManager : MonoBehaviour {
         InstantiateShips.OnShipInstantiated -= DeselectButton;
     }
 
-    //Asher dont touch this.
-    //Asher this is to make it so that when you left click (On the UI) it will deselect the button.
+    // Asher dont touch this.
+    // Asher this is to make it so that when you left click (On the UI) it will deselect the button.
+    // ok
     void Update() {
         if(SelectedButton != null && Input.GetMouseButtonDown(0)) {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
