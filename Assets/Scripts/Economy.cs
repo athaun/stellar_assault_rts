@@ -48,9 +48,6 @@ public class Economy : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             electricity -= amount;
-            Debug.Log("NetElectricity: " + netElectricity);
-            Debug.Log("Electricity: " + electricity);
-            Debug.Log("Amount: " + amount);
         }
     }
     public IEnumerator GenerateElectricity(int amount, bool isActive)
