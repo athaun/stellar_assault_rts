@@ -13257,10 +13257,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrapCost: 1000000
+  electricityConsumption: 125
+  electricityGeneration: 0
   maxHealth: 0
   health: 0
-  selectedByClick: 0
+  attackDamage: 0
   faction: 0
+  selectedByClick: 0
 --- !u!114 &8675926461457713420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13273,10 +13277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6810f5e94b968346ab1f9227d63752c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrapCost: 0
+  electricityConsumption: 0
+  electricityGeneration: 0
   maxHealth: 0
   health: 0
-  selectedByClick: 0
+  attackDamage: 0
   faction: 1
+  selectedByClick: 0
   spaceStation: {fileID: 0}
 --- !u!195 &6532899624931870726
 NavMeshAgent:

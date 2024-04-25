@@ -526,6 +526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrapCost: 300
+  electricityConsumption: 20
+  electricityGeneration: 0
   maxHealth: 0
   health: 0
   selectedByClick: 0
@@ -542,6 +545,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6810f5e94b968346ab1f9227d63752c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrapCost: 0
+  electricityConsumption: 0
+  electricityGeneration: 0
   maxHealth: 0
   health: 0
   selectedByClick: 0
