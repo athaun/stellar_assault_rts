@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
-    private int netElectricity;
+    private static int netElectricity = 0;
     [SerializeField] private int scrap = 0;
     [SerializeField] private int electricity = 0;
 
@@ -20,7 +21,7 @@ public class Economy : MonoBehaviour
     {
         scrap += amount;
     }
-    IEnumerator GenerateScrap(int amount, bool isActive)
+    public IEnumerator GenerateScrap(int amount, bool isActive)
     {
         while(isActive)
         {
@@ -39,16 +40,20 @@ public class Economy : MonoBehaviour
     {
         electricity += amount;
     }
-    IEnumerator ConsumeElectricity(int amount, bool isActive)
+    public IEnumerator ConsumeElectricity(int amount, bool isActive)
     {
         netElectricity -= amount;
+        
         while(isActive)
         {
             yield return new WaitForSeconds(1);
             electricity -= amount;
+            Debug.Log("NetElectricity: " + netElectricity);
+            Debug.Log("Electricity: " + electricity);
+            Debug.Log("Amount: " + amount);
         }
     }
-    IEnumerator GenerateElectricity(int amount, bool isActive)
+    public IEnumerator GenerateElectricity(int amount, bool isActive)
     {
         netElectricity += amount;
         while(isActive)
