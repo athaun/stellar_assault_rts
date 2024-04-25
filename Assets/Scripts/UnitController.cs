@@ -69,6 +69,7 @@ public class UnitController : MonoBehaviour {
             newPosition.y = 0.001f;
             newPositionMarker.transform.position = newPosition;
             AttackPosition();
+            s.clearTargets();
         }
     }
 
@@ -76,17 +77,15 @@ public class UnitController : MonoBehaviour {
         Transform unit = units.getClicked();
 
         if (unit != null) {
+
             Ship enemy = unit.parent.gameObject.GetComponent<Ship>();
 
             if (enemy != null) {
+                if (enemy.faction == 0) return;
+
                 foreach (Ship s in units.SelectedUnits) {
                     s.clearTargets();
                     s.addSelectedTarget(enemy);
-                }
-            } else {
-                foreach (Ship s in units.SelectedUnits) {
-                    s.clearTargets();
-                    s.HasMoveOrders = true;
                 }
             }
         }

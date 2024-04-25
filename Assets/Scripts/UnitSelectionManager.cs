@@ -69,6 +69,8 @@ public class UnitSelectionManager : MonoBehaviour {
         Bounds bounds = new Bounds(selectionBox.anchoredPosition, selectionBox.sizeDelta);
 
         foreach (Ship ship in units) {
+            if (ship.faction != 0) continue;
+
             if (inSelection(Camera.main.WorldToScreenPoint(ship.transform.position), bounds)) {
                 ship.Outline.enabled = true;
                 ship.tag = "SelectedUnit";
@@ -95,6 +97,8 @@ public class UnitSelectionManager : MonoBehaviour {
             Ship ship = unit.parent.gameObject.GetComponent<Ship>();
 
             if (ship != null) {
+                if (ship.faction != 0) return;
+
                 if (!selectedUnits.Contains(ship)) {
                     if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) {
                         clearSelection();
