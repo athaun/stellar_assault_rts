@@ -13258,10 +13258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 0
-  scrapGeneration: 0
+  scrapGeneration: 10
   scrapCost: 1000000
   electricityConsumption: 125
-  electricityGeneration: 600
+  electricityGeneration: 200
   maxHealth: 0
   isPassive: 1
   attackDamage: 0
@@ -13273,9 +13273,9 @@ MonoBehaviour:
   e_muzzleFlashPrefab: {fileID: 0}
   e_bulletPrefab: {fileID: 0}
   e_impactPrefab: {fileID: 0}
-  isActiveElectricityGeneration: 0
+  isActiveElectricityGeneration: 1
   isActiveElectricityConsumption: 1
-  isActiveScrapGeneration: 0
+  isActiveScrapGeneration: 1
   selectedByClick: 0
 --- !u!114 &8675926461457713420
 MonoBehaviour:

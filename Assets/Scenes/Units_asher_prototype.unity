@@ -1457,12 +1457,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675965800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1769073593}
+  m_Father: {fileID: 1595774143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &675965802
 MonoBehaviour:
@@ -1482,8 +1482,8 @@ MonoBehaviour:
   - {fileID: 1374320373566867322, guid: 51822c45955c0124fac43eee0472c7ef, type: 3}
   - {fileID: 3721540338601175686, guid: 56f2d947cddeba04ba5a153b55eca725, type: 3}
   spaceStation: {fileID: 1552122979}
-  numberOfShips: 30
-  spawnRadius: 60
+  numberOfShips: 3
+  spawnRadius: 40
 --- !u!1 &714279086
 GameObject:
   m_ObjectHideFlags: 1
@@ -3063,6 +3063,7 @@ Transform:
   - {fileID: 133065130}
   - {fileID: 1477998712}
   - {fileID: 435675030}
+  - {fileID: 675965801}
   - {fileID: 1045165022}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3275,7 +3276,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 675965801}
   - {fileID: 1552122977}
   - {fileID: 1837008758}
   m_Father: {fileID: 0}
