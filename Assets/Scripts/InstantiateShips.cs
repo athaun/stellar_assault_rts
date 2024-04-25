@@ -8,7 +8,6 @@ public class InstantiateShips : MonoBehaviour {
     public static event Action OnShipInstantiated;
     public GameObject selectedShip;
 
-    public ButtonManager buttonManager;
     // Start is called before the first frame update
     void Start() {
 

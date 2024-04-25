@@ -80,8 +80,6 @@ public class UnitController : MonoBehaviour {
             EnemyShip enemy = unit.parent.gameObject.GetComponent<EnemyShip>();
 
             if (enemy != null && enemy.enabled) {
-                Debug.Log("Attacking enemy " + enemy + " faction " + enemy.faction);
-
                 foreach (Ship s in units.SelectedUnits) {
                     s.clearTargets();
                     s.addSelectedTarget(enemy);

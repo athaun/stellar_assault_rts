@@ -2,13 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ship : MonoBehaviour {
+    private Economy economy;
 
     // Ship stats
     public int faction;
 
     [Header("Cost")]
+    [SerializeField] private int scrapGeneration;
     [SerializeField] private int scrapCost;
-    [SerializeField] private int electricityConsumption;
+    [SerializeField] public int electricityConsumption;
     [SerializeField] private int electricityGeneration;
 
     [Header("Health")]
@@ -33,6 +35,9 @@ public class Ship : MonoBehaviour {
 
     private bool moveOrders = false;
 
+    [SerializeField] private bool isActiveElectricityGeneration = false;
+    [SerializeField] private bool isActiveElectricityConsumption = true;
+    [SerializeField] private bool isActiveScrapGeneration = false;
 
     public int ScrapCost { get => scrapCost; set => scrapCost = value; }
     public int ElectricityConsumption { get => electricityConsumption; set => electricityConsumption = value; }
@@ -64,6 +69,8 @@ public class Ship : MonoBehaviour {
     void Start() {
         mover = GetComponent<UnitMover>();
         outline = GetComponentInChildren<Outline>();
+        economy = FindFirstObjectByType<Economy>();
+
 
         UnitSelectionManager managerInstance = FindFirstObjectByType<UnitSelectionManager>();
         if (managerInstance != null) {
@@ -97,6 +104,16 @@ public class Ship : MonoBehaviour {
 
         targets = new List<Ship>();
         selectedTargets = new List<Ship>();
+
+        if(isActiveElectricityConsumption){
+            StartCoroutine(economy.ConsumeElectricity(electricityConsumption, isActiveElectricityConsumption));//True by default
+        }
+        if(isActiveElectricityGeneration){
+            StartCoroutine(economy.GenerateElectricity(electricityGeneration, isActiveElectricityGeneration));//False by default
+        }
+        if(isActiveScrapGeneration){
+            StartCoroutine(economy.GenerateScrap(scrapGeneration, isActiveScrapGeneration));//False by default
+        }
     }
 
     void Update() {
@@ -120,6 +137,9 @@ public class Ship : MonoBehaviour {
 
         // If health is 0 or less, destroy the unit
         if (health <= 0) {
+            isActiveElectricityGeneration = false;
+            isActiveElectricityConsumption = false;
+            isActiveScrapGeneration = false;
             Destroy(gameObject);
         }
     }
