@@ -68,6 +68,25 @@ public class UnitController : MonoBehaviour {
         if (pressed) {
             newPosition.y = 0.001f;
             newPositionMarker.transform.position = newPosition;
+            AttackPosition();
+        }
+    }
+
+    private void AttackPosition() {
+        Transform unit = units.getClicked();
+
+        if (unit != null) {
+            Ship enemy = unit.parent.gameObject.GetComponent<Ship>();
+
+            if (enemy != null) {
+                foreach (Ship s in units.SelectedUnits) {
+                    s.addSelectedTarget(enemy);
+                }
+            } else {
+                foreach (Ship s in units.SelectedUnits) {
+                    s.clearSelectedTargets();
+                }
+            }
         }
     }
 

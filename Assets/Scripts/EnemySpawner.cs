@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour {
             ship.gameObject.GetComponent<EnemyShip>().enabled = true;
             ship.gameObject.GetComponent<EnemyShip>().SpaceStation = spaceStation;            
 
-            Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+            // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
         }
     }
 }

@@ -36,7 +36,7 @@ public class UnitSelectionManager : MonoBehaviour {
         if (Input.GetMouseButton(0)) {
             updateSelectionBox(Input.mousePosition);
         }
-    }
+    }    
 
     /*
         Called by the Ship class on awake
@@ -125,7 +125,7 @@ public class UnitSelectionManager : MonoBehaviour {
         selectedUnits.Clear();
     }
 
-    Transform getClicked() {
+    public Transform getClicked() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 

@@ -77,8 +77,10 @@ public class Ship : MonoBehaviour {
     void Update() {
         if (selectedTargets.Count > 0) {
             Attack(selectedTargets[0]);
+            Debug.Log("Attacking selected target");
         } else if (targets.Count > 0) {
             Attack(targets[0]);
+            Debug.Log("Attacking target");
         }
     }
 
@@ -90,6 +92,18 @@ public class Ship : MonoBehaviour {
         if (health <= 0) {
             Destroy(gameObject);
         }
+    }
+
+    public void addSelectedTarget(Ship target) {
+        selectedTargets.Add(target);
+    }
+
+    public void removeSelectedTarget(Ship target) {
+        selectedTargets.Remove(target);
+    }
+
+    public void clearSelectedTargets() {
+        selectedTargets.Clear();
     }
 
     protected void Attack(Ship target) {

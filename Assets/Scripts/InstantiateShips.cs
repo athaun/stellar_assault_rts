@@ -34,7 +34,6 @@ public class InstantiateShips : MonoBehaviour {
                         break;
                     }
 
-                    Debug.Log("Instantiating ship");
                     Instantiate(selectedShip, position, Quaternion.identity);
                     economy.UseScrap(selectedShip.GetComponent<Ship>().ScrapCost);
                     OnShipInstantiated?.Invoke();
