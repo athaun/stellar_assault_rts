@@ -53,7 +53,7 @@ public class UnitSelectionManager : MonoBehaviour {
                 units.Remove(ship);
             }
             selectedUnits.Remove(ship);
-            Destroy(ship.gameObject);
+            ship.gameObject.SetActive(false);
         }
         destroyQueue.Clear();
     }

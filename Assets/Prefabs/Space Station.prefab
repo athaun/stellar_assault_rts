@@ -13257,7 +13257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 0
-  scrapGeneration: 10
+  scrapGeneration: 25
   scrapCost: 1000000
   electricityConsumption: 125
   electricityGeneration: 200
