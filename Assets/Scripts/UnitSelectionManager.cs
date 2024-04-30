@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class UnitSelectionManager : MonoBehaviour {
 
+    private static UnitSelectionManager instance;
+    public static UnitSelectionManager Instance { get => instance; }
+
     private List<Ship> units = new List<Ship>();
     private List<Ship> selectedUnits = new List<Ship>();
-    private List<EnemyShip> enemyUnits = new List<EnemyShip>();
+    private List<Ship> enemyUnits = new List<Ship>();
 
-    public List<Ship> Units { get { return units; } }
-    public List<Ship> SelectedUnits { get { return selectedUnits; } }
+    public List<Ship> Units { get => units; }
+    public List<Ship> SelectedUnits { get => selectedUnits; }
+
+    private List<Ship> destroyQueue = new List<Ship>();
 
     public Color[] factionColors;
 
@@ -20,6 +25,7 @@ public class UnitSelectionManager : MonoBehaviour {
 
     void Start() {
         unitMask = LayerMask.GetMask("Unit");
+        instance = this;
     }
 
     void Update() {
@@ -38,6 +44,20 @@ public class UnitSelectionManager : MonoBehaviour {
         }
     }    
 
+    void LateUpdate() {
+        // Destroy ships queued for destruction to avoid modifying the list while iterating
+        foreach (Ship ship in destroyQueue) {
+            if (ship.IsEnemy) {
+                enemyUnits.Remove(ship);
+            } else {
+                units.Remove(ship);
+                selectedUnits.Remove(ship);
+            }
+            Destroy(ship.gameObject);
+        }
+        destroyQueue.Clear();
+    }
+
     /*
         Called by the Ship class on awake
     */
@@ -46,9 +66,13 @@ public class UnitSelectionManager : MonoBehaviour {
         ship.Outline.SetColor(factionColors[ship.faction]);
     }
 
-    public void registerEnemy(EnemyShip ship) {
+    public void registerEnemy(Ship ship) {
         enemyUnits.Add(ship);
         ship.Outline.SetColor(factionColors[ship.faction]);
+    }
+
+    public void removeShip(Ship ship) {
+        destroyQueue.Add(ship);
     }
 
     private bool inSelection(Vector2 position, Bounds bounds) {

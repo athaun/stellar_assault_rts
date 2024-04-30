@@ -31,9 +31,9 @@ public class EnemySpawner : MonoBehaviour {
 
             Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
 
-            ship.gameObject.GetComponent<Ship>().enabled = false;
-            ship.gameObject.GetComponent<EnemyShip>().enabled = true;
-            ship.gameObject.GetComponent<EnemyShip>().SpaceStation = spaceStation;            
+            ship.IsEnemy = true;
+            ship.SpaceStation = spaceStation;
+            ship.faction = 1;
         }
     }
 

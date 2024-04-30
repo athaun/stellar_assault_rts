@@ -23,6 +23,10 @@ public class Ship : MonoBehaviour {
     [SerializeField] protected int awarenessRange = 20;
     [SerializeField] protected float attackRange = 14;
 
+    [Header("Enemy Faction")]
+    [SerializeField] protected bool isEnemy;
+    [SerializeField] protected Ship spaceStation;
+
     [Header("Friendly Bullets")]
     [SerializeField] protected GameObject f_muzzleFlashPrefab;
     [SerializeField] protected GameObject f_bulletPrefab;
@@ -64,6 +68,9 @@ public class Ship : MonoBehaviour {
 
     public List<Ship> Targets { get => targets; }
     public List<Ship> PlayerSelectedTargets { get => selectedTargets; set => selectedTargets = value; }
+
+    public bool IsEnemy { get => isEnemy; set => isEnemy = value; }
+    public Ship SpaceStation { get => spaceStation; set => spaceStation = value; }
     
     // Prevents reset from deselection if outside selection box
     [HideInInspector] public bool selectedByClick = false; 
@@ -116,20 +123,36 @@ public class Ship : MonoBehaviour {
         if(isActiveScrapGeneration){
             StartCoroutine(economy.GenerateScrap(scrapGeneration, isActiveScrapGeneration));//False by default
         }
+
+        if (isEnemy) {
+            faction = 1;
+        }
     }
 
     void Update() {
-        if (HasMoveOrders) {
-            mover.Agent.isStopped = false;
-            mover.moveTo(mover.Agent.destination);
-            if (Vector3.Distance(transform.position, mover.Agent.destination) < 0.1f) {
-                HasMoveOrders = false;
-                mover.Agent.isStopped = true;
+        if (!isEnemy) {
+            if (HasMoveOrders) {
+                mover.Agent.isStopped = false;
+                mover.moveTo(mover.Agent.destination);
+                if (Vector3.Distance(transform.position, mover.Agent.destination) < 0.1f) {
+                    HasMoveOrders = false;
+                    mover.Agent.isStopped = true;
+                }
+            } else if (selectedTargets.Count > 0) {
+                Attack(selectedTargets[0]);
+            } else if (targets.Count > 0) {
+                Attack(targets[0]);
             }
-        } else if (selectedTargets.Count > 0) {
-            Attack(selectedTargets[0]);
-        } else if (targets.Count > 0) {
-            Attack(targets[0]);
+        } else {
+            Outline.enabled = true;
+
+            if (isPassive) return;
+
+            if (Targets.Count > 0) {
+                Attack(Targets[0]);   
+            } else {
+                Attack(spaceStation);
+            }
         }
     }
 
@@ -143,7 +166,7 @@ public class Ship : MonoBehaviour {
             isActiveElectricityConsumption = false;
             isActiveScrapGeneration = false;
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            UnitSelectionManager.Instance.removeShip(this);
         }
     }
 

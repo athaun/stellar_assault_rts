@@ -125,7 +125,6 @@ public class BL_Bullet : MonoBehaviour {
             _targetGameObject.SendMessage("Hit", null, SendMessageOptions.DontRequireReceiver);
 
             Ship target = _targetGameObject.GetComponentInParent<Ship>();
-            Debug.Log(target);
             if (target != null) {
                 target.Hit();
             }

@@ -241,7 +241,6 @@ GameObject:
   - component: {fileID: 7498023061864116335}
   - component: {fileID: 8520203054538222180}
   - component: {fileID: 1374320373566867322}
-  - component: {fileID: 3119554107246715913}
   - component: {fileID: 3638091453578869734}
   - component: {fileID: 7578847673396086228}
   m_Layer: 12
@@ -305,6 +304,8 @@ MonoBehaviour:
   attackDamage: 0
   awarenessRange: 20
   attackRange: 14
+  isEnemy: 0
+  spaceStation: {fileID: 0}
   f_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 56a211c4a8245f04eae6eaf5fc02df49,
     type: 3}
   f_bulletPrefab: {fileID: 1452043023141516, guid: aa3012ee17196004caa3b353e751f967,
@@ -323,40 +324,6 @@ MonoBehaviour:
   isActiveElectricityConsumption: 1
   isActiveScrapGeneration: 0
   selectedByClick: 0
---- !u!114 &3119554107246715913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498023063095419739}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6810f5e94b968346ab1f9227d63752c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faction: 1
-  scrapGeneration: 0
-  scrapCost: 0
-  electricityConsumption: 0
-  electricityGeneration: 0
-  maxHealth: 0
-  isPassive: 0
-  attackDamage: 0
-  awarenessRange: 20
-  attackRange: 14
-  f_muzzleFlashPrefab: {fileID: 0}
-  f_bulletPrefab: {fileID: 0}
-  f_impactPrefab: {fileID: 0}
-  e_muzzleFlashPrefab: {fileID: 0}
-  e_bulletPrefab: {fileID: 0}
-  e_impactPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  isActiveElectricityGeneration: 0
-  isActiveElectricityConsumption: 1
-  isActiveScrapGeneration: 0
-  selectedByClick: 0
-  spaceStation: {fileID: 0}
 --- !u!195 &3638091453578869734
 NavMeshAgent:
   m_ObjectHideFlags: 0

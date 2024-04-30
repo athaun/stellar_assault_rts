@@ -2,6 +2,9 @@
 
 public class UnitController : MonoBehaviour {
 
+    private static UnitController instance;
+    public static UnitController Instance { get => instance; }
+
     private Camera mainCamera;
     private LayerMask groundLayer;
 
@@ -77,7 +80,7 @@ public class UnitController : MonoBehaviour {
 
         if (unit != null) {
 
-            EnemyShip enemy = unit.parent.gameObject.GetComponent<EnemyShip>();
+            Ship enemy = unit.parent.gameObject.GetComponent<Ship>();
 
             if (enemy != null && enemy.enabled) {
                 foreach (Ship s in units.SelectedUnits) {
