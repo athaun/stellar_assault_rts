@@ -51,8 +51,8 @@ public class UnitSelectionManager : MonoBehaviour {
                 enemyUnits.Remove(ship);
             } else {
                 units.Remove(ship);
-                selectedUnits.Remove(ship);
             }
+            selectedUnits.Remove(ship);
             Destroy(ship.gameObject);
         }
         destroyQueue.Clear();

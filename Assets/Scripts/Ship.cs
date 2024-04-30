@@ -104,6 +104,7 @@ public class Ship : MonoBehaviour {
                 turret.muzzleFlashPrefab = f_muzzleFlashPrefab;
                 turret.bulletPrefab = f_bulletPrefab;
                 turret.impactPrefab = f_impactPrefab;
+                Debug.Log("Faction 0 " + f_muzzleFlashPrefab + " " + f_bulletPrefab + " " + f_impactPrefab);
             } else {
                 turret.muzzleFlashPrefab = e_muzzleFlashPrefab;
                 turret.bulletPrefab = e_bulletPrefab;
