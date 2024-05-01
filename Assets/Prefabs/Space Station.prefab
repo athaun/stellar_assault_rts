@@ -13206,6 +13206,7 @@ GameObject:
   - component: {fileID: 3721540338601175686}
   - component: {fileID: 6532899624931870726}
   - component: {fileID: 4820096229307606621}
+  - component: {fileID: 9015974279208210025}
   m_Layer: 12
   m_Name: Space Station
   m_TagString: selectableUnit
@@ -13332,6 +13333,22 @@ MonoBehaviour:
   bulletLife: 6
   impactPrefab: {fileID: 1465047856855714, guid: b51baabf76bdfb244bfa9e4483c06239,
     type: 3}
+--- !u!114 &9015974279208210025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498023063095419739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cdc972f536c3348bc7332b21e69957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 2
+  scale: {x: 1, y: 0.1, z: 0.1}
+  color: {r: 0, g: 1, b: 0, a: 1}
+  referenceColor: {r: 1, g: 0.5990566, b: 0.5990566, a: 1}
 --- !u!1 &7498023063330041274
 GameObject:
   m_ObjectHideFlags: 0
