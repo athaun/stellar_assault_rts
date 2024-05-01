@@ -20,7 +20,7 @@ public class Ship : MonoBehaviour {
     [Header("Combat")]
     [SerializeField] protected bool isPassive;
     [SerializeField] protected int attackDamage;
-    [SerializeField] protected int awarenessRange = 20;
+    [SerializeField] protected int awarenessRange = 14;
     [SerializeField] protected float attackRange = 14;
 
     [Header("Enemy Faction")]
@@ -56,6 +56,7 @@ public class Ship : MonoBehaviour {
     // Static components
     protected UnitMover mover;
     protected Outline outline;    
+    protected Healthbar healthbar;
 
     public UnitMover Mover { get => mover; }
     public Outline Outline { get => outline; }
@@ -79,6 +80,7 @@ public class Ship : MonoBehaviour {
         mover = GetComponent<UnitMover>();
         outline = GetComponentInChildren<Outline>();
         economy = FindFirstObjectByType<Economy>();
+        healthbar = GetComponent<Healthbar>();
 
 
         UnitSelectionManager managerInstance = FindFirstObjectByType<UnitSelectionManager>();
@@ -104,7 +106,7 @@ public class Ship : MonoBehaviour {
                 turret.muzzleFlashPrefab = f_muzzleFlashPrefab;
                 turret.bulletPrefab = f_bulletPrefab;
                 turret.impactPrefab = f_impactPrefab;
-                Debug.Log("Faction 0 " + f_muzzleFlashPrefab + " " + f_bulletPrefab + " " + f_impactPrefab);
+                // Debug.Log("Faction 0 " + f_muzzleFlashPrefab + " " + f_bulletPrefab + " " + f_impactPrefab);
             } else {
                 turret.muzzleFlashPrefab = e_muzzleFlashPrefab;
                 turret.bulletPrefab = e_bulletPrefab;
@@ -131,6 +133,9 @@ public class Ship : MonoBehaviour {
     }
 
     void Update() {
+        checkRadius();
+        removeDeadEnemies();
+
         if (!isEnemy) {
             if (HasMoveOrders) {
                 mover.Agent.isStopped = false;
@@ -140,9 +145,9 @@ public class Ship : MonoBehaviour {
                     mover.Agent.isStopped = true;
                 }
             } else if (selectedTargets.Count > 0) {
-                Attack(selectedTargets[0]);
+                Attack(closestTarget(selectedTargets));
             } else if (targets.Count > 0) {
-                Attack(targets[0]);
+                Attack(closestTarget(Targets));
             }
         } else {
             Outline.enabled = true;
@@ -150,9 +155,43 @@ public class Ship : MonoBehaviour {
             if (isPassive) return;
 
             if (Targets.Count > 0) {
-                Attack(Targets[0]);   
+                Attack(closestTarget(Targets));   
             } else {
                 Attack(spaceStation);
+            }
+        }
+    }
+
+    private Ship closestTarget(List<Ship> t) {
+        Ship closestShip = null;
+        float closestDistance = Mathf.Infinity;
+        
+        foreach (Ship ship in t) {
+            float distance = Vector3.Distance(transform.position, ship.transform.position);
+            
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestShip = ship;
+            }
+        }
+        
+        return closestShip;
+    }
+
+    private void removeDeadEnemies() {
+        for (int i = 0; i < targets.Count; i++) {
+            if (!targets[i].isActiveAndEnabled) {
+                targets.RemoveAt(i);
+            }
+        }
+    }
+
+    private void checkRadius() {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, awarenessRange);
+        foreach (Collider collider in colliders) {
+            Ship target = collider.GetComponentInParent<Ship>();
+            if (target != null && target.faction != faction) {
+                targets.Add(target);
             }
         }
     }
@@ -160,6 +199,8 @@ public class Ship : MonoBehaviour {
     public void TakeDamage(int damage) {
         // Reduce health by the damage amount
         health -= damage;
+
+        if (healthbar != null) healthbar.updateHealth(health, maxHealth);
 
         // If health is 0 or less, destroy the unit
         if (health <= 0) {
@@ -222,9 +263,10 @@ public class Ship : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other) {        
         // If the collider is a ship, add it to the list of targets
-        Ship target = other.GetComponent<Ship>();
+        Ship target = other.gameObject.GetComponentInParent<Ship>();
+
         if (target != null && target.faction != faction) {
             targets.Add(target);
         }
@@ -232,7 +274,7 @@ public class Ship : MonoBehaviour {
 
     void OnTriggerExit(Collider other) {
         // If the collider is a ship, remove it from the list of targets
-        Ship target = other.GetComponent<Ship>();
+        Ship target = other.GetComponentInParent<Ship>();
         if (target != null && target.faction != faction) {
             targets.Remove(target);
         }

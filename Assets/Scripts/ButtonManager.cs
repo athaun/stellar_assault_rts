@@ -11,10 +11,15 @@ public class ButtonManager : MonoBehaviour {
     private Button SelectedButton;
 
     public void SelectButton(Button button) {
+
+        // Prevents the player from moving selected units to the new unit position
+        UnitSelectionManager.Instance.clearSelection();
+
         if(SelectedButton == button) {
             DeselectButton();
             return;
         }
+        
         if (SelectedButton != null)
         {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();

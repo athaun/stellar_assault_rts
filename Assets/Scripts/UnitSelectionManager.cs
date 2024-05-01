@@ -144,7 +144,7 @@ public class UnitSelectionManager : MonoBehaviour {
         }
     }
 
-    private void clearSelection() {
+    public void clearSelection() {
         foreach (Ship ship in selectedUnits) {
             ship.tag = "selectableUnit";
             ship.Outline.enabled = false;

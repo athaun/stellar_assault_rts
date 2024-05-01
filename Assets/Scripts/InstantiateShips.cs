@@ -8,12 +8,6 @@ public class InstantiateShips : MonoBehaviour {
     public static event Action OnShipInstantiated;
     public GameObject selectedShip;
 
-    // Start is called before the first frame update
-    void Start() {
-
-    }
-
-    // Update is called once per frame
     void Update() {
         if (selectedShip != null && Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
