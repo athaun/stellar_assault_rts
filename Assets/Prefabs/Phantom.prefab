@@ -302,8 +302,8 @@ MonoBehaviour:
   maxHealth: 100
   isPassive: 0
   attackDamage: 0
-  awarenessRange: 20
-  attackRange: 14
+  awarenessRange: 7
+  attackRange: 12
   isEnemy: 0
   spaceStation: {fileID: 0}
   f_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 56a211c4a8245f04eae6eaf5fc02df49,

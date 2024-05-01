@@ -530,11 +530,11 @@ MonoBehaviour:
   scrapCost: 200
   electricityConsumption: 20
   electricityGeneration: 0
-  maxHealth: 0
+  maxHealth: 100
   isPassive: 0
   attackDamage: 0
-  awarenessRange: 20
-  attackRange: 14
+  awarenessRange: 9
+  attackRange: 15
   isEnemy: 0
   spaceStation: {fileID: 0}
   f_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 56a211c4a8245f04eae6eaf5fc02df49,

@@ -55,7 +55,7 @@ public class Ship : MonoBehaviour {
 
     // Static components
     protected UnitMover mover;
-    protected Outline outline;    
+    protected Outline outline;
     protected Healthbar healthbar;
 
     public UnitMover Mover { get => mover; }
@@ -72,9 +72,9 @@ public class Ship : MonoBehaviour {
 
     public bool IsEnemy { get => isEnemy; set => isEnemy = value; }
     public Ship SpaceStation { get => spaceStation; set => spaceStation = value; }
-    
+
     // Prevents reset from deselection if outside selection box
-    [HideInInspector] public bool selectedByClick = false; 
+    [HideInInspector] public bool selectedByClick = false;
 
     void Start() {
         mover = GetComponent<UnitMover>();
@@ -117,13 +117,13 @@ public class Ship : MonoBehaviour {
         targets = new List<Ship>();
         selectedTargets = new List<Ship>();
 
-        if(isActiveElectricityConsumption){
+        if (isActiveElectricityConsumption) {
             StartCoroutine(economy.ConsumeElectricity(electricityConsumption, isActiveElectricityConsumption));//True by default
         }
-        if(isActiveElectricityGeneration){
+        if (isActiveElectricityGeneration) {
             StartCoroutine(economy.GenerateElectricity(electricityGeneration, isActiveElectricityGeneration));//False by default
         }
-        if(isActiveScrapGeneration){
+        if (isActiveScrapGeneration) {
             StartCoroutine(economy.GenerateScrap(scrapGeneration, isActiveScrapGeneration));//False by default
         }
 
@@ -138,12 +138,7 @@ public class Ship : MonoBehaviour {
 
         if (!isEnemy) {
             if (HasMoveOrders) {
-                mover.Agent.isStopped = false;
-                mover.moveTo(mover.Agent.destination);
-                if (Vector3.Distance(transform.position, mover.Agent.destination) < 0.1f) {
-                    HasMoveOrders = false;
-                    mover.Agent.isStopped = true;
-                }
+                move();
             } else if (selectedTargets.Count > 0) {
                 Attack(closestTarget(selectedTargets));
             } else if (targets.Count > 0) {
@@ -155,26 +150,35 @@ public class Ship : MonoBehaviour {
             if (isPassive) return;
 
             if (Targets.Count > 0) {
-                Attack(closestTarget(Targets));   
+                Attack(closestTarget(Targets));
             } else {
                 Attack(spaceStation);
             }
         }
     }
 
+    private void move() {
+        mover.Agent.isStopped = false;
+        mover.moveTo(mover.Agent.destination);
+        if (Vector3.Distance(transform.position, mover.Agent.destination) < 0.1f) {
+            HasMoveOrders = false;
+            mover.Agent.isStopped = true;
+        }
+    }
+
     private Ship closestTarget(List<Ship> t) {
         Ship closestShip = null;
         float closestDistance = Mathf.Infinity;
-        
+
         foreach (Ship ship in t) {
             float distance = Vector3.Distance(transform.position, ship.transform.position);
-            
+
             if (distance < closestDistance) {
                 closestDistance = distance;
                 closestShip = ship;
             }
         }
-        
+
         return closestShip;
     }
 
@@ -182,6 +186,11 @@ public class Ship : MonoBehaviour {
         for (int i = 0; i < targets.Count; i++) {
             if (!targets[i].isActiveAndEnabled) {
                 targets.RemoveAt(i);
+            }
+        }
+        for (int i = 0; i < selectedTargets.Count; i++) {
+            if (!selectedTargets[i].isActiveAndEnabled) {
+                selectedTargets.RemoveAt(i);
             }
         }
     }
@@ -241,7 +250,7 @@ public class Ship : MonoBehaviour {
             HasMoveOrders = false;
 
             Mover.rotateShip(target.transform.position);
-            
+
             // If the target is in range, attack it
             // Get the direction of the target
             Vector3 targetDirection = (target.transform.position - transform.position).normalized;
@@ -256,14 +265,14 @@ public class Ship : MonoBehaviour {
             if (angle < 10f) {
                 turret.Fire();
             }
-            
+
         } else {
             mover.moveTo(target.transform.position);
             mover.Agent.isStopped = false;
         }
     }
 
-    void OnTriggerEnter(Collider other) {        
+    void OnTriggerEnter(Collider other) {
         // If the collider is a ship, add it to the list of targets
         Ship target = other.gameObject.GetComponentInParent<Ship>();
 

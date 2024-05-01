@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 63.26274, y: 0, z: 52.2201}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7658264554154222846}
@@ -69,11 +69,11 @@ MonoBehaviour:
   scrapCost: 150
   electricityConsumption: 25
   electricityGeneration: 0
-  maxHealth: 100
+  maxHealth: 300
   isPassive: 0
   attackDamage: 0
-  awarenessRange: 20
-  attackRange: 14
+  awarenessRange: 14
+  attackRange: 16
   isEnemy: 0
   spaceStation: {fileID: 0}
   f_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 56a211c4a8245f04eae6eaf5fc02df49,
