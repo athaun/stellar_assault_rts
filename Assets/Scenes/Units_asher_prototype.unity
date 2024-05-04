@@ -1543,6 +1543,7 @@ GameObject:
   - component: {fileID: 745335468}
   - component: {fileID: 745335471}
   - component: {fileID: 745335470}
+  - component: {fileID: 745335472}
   m_Layer: 0
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1589,13 +1590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Harmless worker
-
-    50 Scrap
-
-    10kW / sec
-
-    100 Health'
+  m_text: Harmless Worker
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1674,6 +1669,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745335467}
   m_CullTransparentMesh: 1
+--- !u!114 &745335472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745335467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c88c9def44cad140b9a2bc47689e164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 7498023063095419739, guid: 92a0cfa15bc5cb241a8eb2394164f7c7, type: 3}
 --- !u!1 &822098943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,6 +1693,7 @@ GameObject:
   - component: {fileID: 822098944}
   - component: {fileID: 822098947}
   - component: {fileID: 822098946}
+  - component: {fileID: 822098948}
   m_Layer: 0
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -1731,17 +1740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Agile Fighter
-
-    150 Scrap
-
-    25kW / sec
-
-    10 Damage
-
-    10 Health
-
-'
+  m_text: Agile Fighter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1820,6 +1819,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822098943}
   m_CullTransparentMesh: 1
+--- !u!114 &822098948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822098943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c88c9def44cad140b9a2bc47689e164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 7498023063095419739, guid: 56f2d947cddeba04ba5a153b55eca725, type: 3}
 --- !u!1 &886458199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1843,7 @@ GameObject:
   - component: {fileID: 886458200}
   - component: {fileID: 886458203}
   - component: {fileID: 886458202}
+  - component: {fileID: 886458204}
   m_Layer: 0
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -1877,18 +1890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Powerful Gunship
-
-    300 Scrap
-
-    20kW / sec
-
-    10 Damage
-
-    10
-    Health
-
-'
+  m_text: Powerful Gunship
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1967,6 +1969,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886458199}
   m_CullTransparentMesh: 1
+--- !u!114 &886458204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886458199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c88c9def44cad140b9a2bc47689e164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 7498023063095419739, guid: 7f0c875eadb078240b1c224e9d508850, type: 3}
 --- !u!1 &1003229549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2909,7 @@ GameObject:
   - component: {fileID: 1592292985}
   - component: {fileID: 1592292988}
   - component: {fileID: 1592292987}
+  - component: {fileID: 1592292989}
   m_Layer: 0
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -2940,19 +2956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dangerous worker
-
-    200 Scrap
-
-    15kW / sec
-
-    10 Damage
-
-    10
-    Health
-
-
-'
+  m_text: Dangerous Worker
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3031,6 +3035,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592292984}
   m_CullTransparentMesh: 1
+--- !u!114 &1592292989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592292984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c88c9def44cad140b9a2bc47689e164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 7498023063095419739, guid: 51822c45955c0124fac43eee0472c7ef, type: 3}
 --- !u!1 &1595774142
 GameObject:
   m_ObjectHideFlags: 0

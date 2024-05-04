@@ -7,6 +7,7 @@ public class InstantiateShips : MonoBehaviour {
     [SerializeField] private Economy economy;
     public static event Action OnShipInstantiated;
     public GameObject selectedShip;
+    [SerializeField] private Button shipButton;
 
     // Start is called before the first frame update
     void Start() {
@@ -15,6 +16,11 @@ public class InstantiateShips : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(economy.Scrap < selectedShip.GetComponent<Ship>().ScrapCost) {
+            shipButton.interactable = false;
+        } else {
+            shipButton.interactable = true;
+        }
         if (selectedShip != null && Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
