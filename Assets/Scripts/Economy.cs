@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
+    private Ship ship;
     private static int netElectricity = 0;
     [SerializeField] private int scrap = 0;
     [SerializeField] private int electricity = 0;

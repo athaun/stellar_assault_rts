@@ -66,12 +66,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faction: 0
   scrapGeneration: 0
-  scrapCost: 150
+  scrapCost: 175
   electricityConsumption: 25
   electricityGeneration: 0
   maxHealth: 300
   isPassive: 0
-  attackDamage: 0
+  attackDamage: 30
   awarenessRange: 14
   attackRange: 16
   isEnemy: 0

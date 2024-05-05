@@ -532,7 +532,7 @@ MonoBehaviour:
   electricityGeneration: 0
   maxHealth: 100
   isPassive: 0
-  attackDamage: 0
+  attackDamage: 40
   awarenessRange: 9
   attackRange: 15
   isEnemy: 0
