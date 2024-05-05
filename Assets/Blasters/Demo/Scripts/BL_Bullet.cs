@@ -85,6 +85,12 @@ public class BL_Bullet : MonoBehaviour {
             // Get the target (hit) collider
             Collider _target = _hit.collider;
 
+            // Ignore if the layer is an awareness collider
+            if (_target.gameObject.layer == LayerMask.NameToLayer("Awareness"))
+            {
+                return;
+            }
+
             // Calculate the incoming vector (hit point minus bullets position since we are not quite yet at the target, only the raycast
             // has detected the hit.
             Vector3 _incomingVec = _hit.point - _transform.position; 
@@ -117,6 +123,11 @@ public class BL_Bullet : MonoBehaviour {
             // You may want to add the ability to send damage or information of a team that you belong to etc. using the
             // second argument which is currently set to null.
             _targetGameObject.SendMessage("Hit", null, SendMessageOptions.DontRequireReceiver);
+
+            Ship target = _targetGameObject.GetComponentInParent<Ship>();
+            if (target != null) {
+                target.Hit();
+            }
 
             // The bullet has hit so we should stop the particle system and trail renderers from emitting any more particles.
             _particleSystem.Stop();            

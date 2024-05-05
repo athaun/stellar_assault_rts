@@ -13204,9 +13204,9 @@ GameObject:
   - component: {fileID: 7498023061864116335}
   - component: {fileID: 8520203054538222180}
   - component: {fileID: 3721540338601175686}
-  - component: {fileID: 8675926461457713420}
   - component: {fileID: 6532899624931870726}
   - component: {fileID: 4820096229307606621}
+  - component: {fileID: 9015974279208210025}
   m_Layer: 12
   m_Name: Space Station
   m_TagString: selectableUnit
@@ -13257,35 +13257,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faction: 0
+  scrapGeneration: 25
   scrapCost: 1000000
   electricityConsumption: 125
-  electricityGeneration: 0
-  maxHealth: 0
-  health: 0
+  electricityGeneration: 200
+  maxHealth: 20000
+  isPassive: 1
   attackDamage: 0
-  faction: 0
-  selectedByClick: 0
---- !u!114 &8675926461457713420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498023063095419739}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6810f5e94b968346ab1f9227d63752c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrapCost: 0
-  electricityConsumption: 0
-  electricityGeneration: 0
-  maxHealth: 0
-  health: 0
-  attackDamage: 0
-  faction: 1
-  selectedByClick: 0
+  awarenessRange: 0
+  attackRange: 0
+  isEnemy: 0
   spaceStation: {fileID: 0}
+  f_muzzleFlashPrefab: {fileID: 0}
+  f_bulletPrefab: {fileID: 0}
+  f_impactPrefab: {fileID: 0}
+  e_muzzleFlashPrefab: {fileID: 0}
+  e_bulletPrefab: {fileID: 0}
+  e_impactPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 1036410813808012, guid: d259e158f02233a4aba5f6d49c930ae5,
+    type: 3}
+  isActiveElectricityGeneration: 1
+  isActiveElectricityConsumption: 1
+  isActiveScrapGeneration: 1
+  selectedByClick: 0
 --- !u!195 &6532899624931870726
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13338,6 +13333,22 @@ MonoBehaviour:
   bulletLife: 6
   impactPrefab: {fileID: 1465047856855714, guid: b51baabf76bdfb244bfa9e4483c06239,
     type: 3}
+--- !u!114 &9015974279208210025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498023063095419739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cdc972f536c3348bc7332b21e69957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 2
+  scale: {x: 1, y: 0.1, z: 0.1}
+  color: {r: 0, g: 1, b: 0, a: 1}
+  referenceColor: {r: 1, g: 0.5990566, b: 0.5990566, a: 1}
 --- !u!1 &7498023063330041274
 GameObject:
   m_ObjectHideFlags: 0

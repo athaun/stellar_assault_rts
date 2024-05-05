@@ -17,6 +17,6 @@ public class EcoStatUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = $"Scrap: {economy.Scrap}\nElectricity: {economy.NetElectricity}/{economy.Electricity}kW";
+        text.text = $"Scrap: ${economy.Scrap}"; // \nElectricity: {economy.NetElectricity}/{economy.Electricity}kW"
     }
 }

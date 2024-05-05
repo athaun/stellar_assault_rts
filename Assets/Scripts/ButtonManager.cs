@@ -11,10 +11,15 @@ public class ButtonManager : MonoBehaviour {
     private Button SelectedButton;
 
     public void SelectButton(Button button) {
+
+        // Prevents the player from moving selected units to the new unit position
+        UnitSelectionManager.Instance.clearSelection();
+
         if(SelectedButton == button) {
             DeselectButton();
             return;
         }
+        
         if (SelectedButton != null)
         {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -77,6 +82,13 @@ public class ButtonManager : MonoBehaviour {
             {
                 foreach(RaycastResult result in results)
                 {
+                    // Skip any GameObjects with colliders that we want to ignore
+                    Collider collider = result.gameObject.GetComponent<Collider>();
+                    if(collider != null && collider.gameObject.layer == LayerMask.NameToLayer("Awareness"))
+                    {
+                        continue;
+                    }
+
                     if(result.gameObject.GetComponent<Button>() != null)
                     {
                         return;

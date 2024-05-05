@@ -36,12 +36,13 @@ public class BL_Turret : MonoBehaviour {
 
     // Reference to the prefab used for muzzle flashes (must contain an appropriate particle system.
     // Duplicate and modify existing muzzle flash prefabs if you want to make your own
-    public GameObject muzzleFlashPrefab;
+    [HideInInspector] public GameObject muzzleFlashPrefab;
+
 
     [Header("BULLET PROPERTIES")]
 
     // Reference to the bullet prefab to be fired out of the blasters of this turret
-    public GameObject bulletPrefab;
+    [HideInInspector] public GameObject bulletPrefab;
 
     // Bullet velocity of the bullet prefabs fired out of this turret
     public float bulletVelocity = 100f;
@@ -50,7 +51,7 @@ public class BL_Turret : MonoBehaviour {
     public float bulletLife = 2.0f;    
 
     // Reference to the impact prefab to be shown when a bullet hits an object
-    public GameObject impactPrefab;
+    [HideInInspector] public GameObject impactPrefab;
 
     // Size of the impact pool (number of impacts that can be shown simultaneously)
     int impactPoolSize = 8;
@@ -126,7 +127,7 @@ public class BL_Turret : MonoBehaviour {
     {
         // Set target to the new target position
         _target = _newTarget;
-        _target.y = 0.1f;
+        _target.y = 0.7f;
     }
 
     // Public method to fire the turret (call this from external scripts like Players or AI)

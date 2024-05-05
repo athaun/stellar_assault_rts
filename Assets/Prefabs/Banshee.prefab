@@ -242,14 +242,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3217906244382844270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0.8000002, y: 0.2, z: 0.06119919}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55, y: 0.2, z: 0.06119919}
   m_LocalScale: {x: 0.100000046, y: 0.10000003, z: 0.10000003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5236121649262654757}
   m_Father: {fileID: 7498023061864116335}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1692879323757125458
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -365,14 +365,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4106137683564427642}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: -0.8000002, y: 0.2, z: 0.06119919}
+  m_LocalRotation: {x: 0, y: 0.008726558, z: 0, w: 0.999962}
+  m_LocalPosition: {x: -0.55, y: 0.2, z: 0.06119919}
   m_LocalScale: {x: 0.100000046, y: 0.10000003, z: 0.10000003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5429280080951179245}
   m_Father: {fileID: 7498023061864116335}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
 --- !u!33 &6670076576530208143
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -471,7 +471,6 @@ GameObject:
   - component: {fileID: 7498023061864116335}
   - component: {fileID: 8520203054538222180}
   - component: {fileID: 4532498729790709373}
-  - component: {fileID: 10673339286696191}
   - component: {fileID: 4700441413933968285}
   - component: {fileID: 3674342662744564614}
   m_Layer: 12
@@ -526,33 +525,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25740a32a0b924f08849739adf1252ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapCost: 300
+  faction: 0
+  scrapGeneration: 0
+  scrapCost: 200
   electricityConsumption: 20
   electricityGeneration: 0
-  maxHealth: 0
-  health: 0
-  selectedByClick: 0
-  faction: 0
---- !u!114 &10673339286696191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498023063095419739}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6810f5e94b968346ab1f9227d63752c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrapCost: 0
-  electricityConsumption: 0
-  electricityGeneration: 0
-  maxHealth: 0
-  health: 0
-  selectedByClick: 0
-  faction: 1
+  maxHealth: 100
+  isPassive: 0
+  attackDamage: 0
+  awarenessRange: 9
+  attackRange: 15
+  isEnemy: 0
   spaceStation: {fileID: 0}
+  f_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 56a211c4a8245f04eae6eaf5fc02df49,
+    type: 3}
+  f_bulletPrefab: {fileID: 1452043023141516, guid: aa3012ee17196004caa3b353e751f967,
+    type: 3}
+  f_impactPrefab: {fileID: 1465047856855714, guid: e5c34e2d4c768b14b8f630dc94871324,
+    type: 3}
+  e_muzzleFlashPrefab: {fileID: 1405493527027760, guid: 9466dbf4e29f37e438f4c041f5166045,
+    type: 3}
+  e_bulletPrefab: {fileID: 1452043023141516, guid: 4f5fa7040d56cbb49b77ccae6be4f3c0,
+    type: 3}
+  e_impactPrefab: {fileID: 1465047856855714, guid: b51baabf76bdfb244bfa9e4483c06239,
+    type: 3}
+  explosionPrefab: {fileID: 1036410813808012, guid: d259e158f02233a4aba5f6d49c930ae5,
+    type: 3}
+  isActiveElectricityGeneration: 0
+  isActiveElectricityConsumption: 1
+  isActiveScrapGeneration: 0
+  selectedByClick: 0
 --- !u!195 &4700441413933968285
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -597,14 +599,11 @@ MonoBehaviour:
   fireSequential: 1
   rotationSpeed: 10
   lockYAxis: 0
-  muzzleFlashPrefab: {fileID: 1405493527027760, guid: 9466dbf4e29f37e438f4c041f5166045,
-    type: 3}
-  bulletPrefab: {fileID: 1452043023141516, guid: 4f5fa7040d56cbb49b77ccae6be4f3c0,
-    type: 3}
+  muzzleFlashPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 0}
   bulletVelocity: 60
   bulletLife: 6
-  impactPrefab: {fileID: 1465047856855714, guid: b51baabf76bdfb244bfa9e4483c06239,
-    type: 3}
+  impactPrefab: {fileID: 0}
 --- !u!1 &7498023063330041274
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,24 +4,64 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour {
+
+    private static EnemySpawner instance;
+    public static EnemySpawner Instance { get; }
+
     public Ship[] shipPrefabs;
     public Ship spaceStation;
 
-    public int numberOfShips = 10;
-    public float spawnRadius = 10f;
+    public int initialNumberOfShips = 2;
+    public int increasePerRound = 1;
+    public float spawnDelay = 2f;
+    public float roundDelay = 5f;
+    public Transform[] spawnPoints;
+
+    private int currentRound = 0;
+    private int remainingShips;
+    private bool spawning;
+
 
     void Start() {
-        for (int i = 0; i < numberOfShips; i++) {
-            Vector3 spawnPosition = Random.insideUnitSphere * spawnRadius;
-            spawnPosition.y = 0;
+        instance = this;
+        remainingShips = initialNumberOfShips;
+        StartCoroutine(SpawnShips());
 
-            Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
+    }
 
-            ship.gameObject.GetComponent<Ship>().enabled = false;
-            ship.gameObject.GetComponent<EnemyShip>().enabled = true;
-            ship.gameObject.GetComponent<EnemyShip>().SpaceStation = spaceStation;            
+    IEnumerator SpawnShips() {
+        spawning = true;
+        yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+        while (remainingShips > 0) {
+            for (int i = 0; i < remainingShips; i++) {
+                if (remainingShips <= 0) break;
+                SpawnShip();
+                remainingShips--;
+                yield return new WaitForSeconds(spawnDelay);
+            }
+            yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+            currentRound++;
+        }
+        spawning = false;
+    }
 
-            Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+    void SpawnShip() {
+        Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
+
+        ship.IsEnemy = true;
+        ship.SpaceStation = spaceStation;
+        ship.faction = 1;
+
+        Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+    }
+
+    public static void ShipDestroyed() {
+        Debug.Log("Ship destroyed");
+        instance.remainingShips--;
+        if (instance.remainingShips <= 0 && !instance.spawning) {
+            instance.remainingShips = instance.initialNumberOfShips + (instance.increasePerRound * instance.currentRound);
+            instance.StartCoroutine(instance.SpawnShips());
         }
     }
 }

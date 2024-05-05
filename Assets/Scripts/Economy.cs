@@ -22,6 +22,7 @@ public class Economy : MonoBehaviour
     {
         scrap += amount;
     }
+    
     public IEnumerator GenerateScrap(int amount, bool isActive)
     {
         while(isActive)
@@ -30,6 +31,7 @@ public class Economy : MonoBehaviour
             scrap += amount;
         }
     }
+
     public void UseScrap(int amount)
     {
         scrap -= amount;
@@ -41,6 +43,7 @@ public class Economy : MonoBehaviour
     {
         electricity += amount;
     }
+
     public IEnumerator ConsumeElectricity(int amount, bool isActive)
     {
         netElectricity -= amount;
@@ -51,6 +54,7 @@ public class Economy : MonoBehaviour
             electricity -= amount;
         }
     }
+
     public IEnumerator GenerateElectricity(int amount, bool isActive)
     {
         netElectricity += amount;
@@ -60,6 +64,7 @@ public class Economy : MonoBehaviour
             electricity += amount;
         }
     }
+
     public void RemoveElectricity(int amount)
     {
         electricity -= amount;
