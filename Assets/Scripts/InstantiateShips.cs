@@ -7,14 +7,12 @@ public class InstantiateShips : MonoBehaviour {
     [SerializeField] private Economy economy;
     public static event Action OnShipInstantiated;
     public GameObject selectedShip;
-    [SerializeField] private Button shipButton;
+    private Button shipButton;
 
-    // Start is called before the first frame update
     void Start() {
-
+        shipButton = GetComponent<Button>();
     }
 
-    // Update is called once per frame
     void Update() {
         if(economy.Scrap < selectedShip.GetComponent<Ship>().ScrapCost) {
             shipButton.interactable = false;
