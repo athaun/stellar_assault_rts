@@ -4,22 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonText : MonoBehaviour
-{
-    // Start is called before the first frame update
+public class ButtonText : MonoBehaviour {
     [SerializeField] private GameObject ship;
     private string originalText;
     TextMeshProUGUI text;
-    // Start is called before the first frame update
-    void Start()
-    {
+    
+    void Start() {
         text = GetComponent<TextMeshProUGUI>();
         originalText = text.text;
-        text.text = originalText + $"\n${ship.GetComponent<Ship>().ScrapCost} Scrap";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        Ship s = ship.GetComponent<Ship>();
+        text.text = originalText + $"\n${s.ScrapCost} Scrap\n{s.MaxHealth} Health\n{s.AttackDamage} Damage";
     }
 }
