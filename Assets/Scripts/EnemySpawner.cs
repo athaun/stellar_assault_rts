@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemySpawner : MonoBehaviour {
+
+    private static EnemySpawner instance;
+    public static EnemySpawner Instance { get; }
+
     public Ship[] shipPrefabs;
     public Ship spaceStation;
 
@@ -13,22 +17,24 @@ public class EnemySpawner : MonoBehaviour {
     public float roundDelay = 5f;
     public Transform[] spawnPoints;
 
-    private int currentRound = 1;
+    private int currentRound = 0;
     private int remainingShips;
     private bool spawning;
 
+
     void Start() {
+        instance = this;
         remainingShips = initialNumberOfShips;
         StartCoroutine(SpawnShips());
+
     }
 
     IEnumerator SpawnShips() {
         spawning = true;
         yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
         while (remainingShips > 0) {
-            for (int i = 0; i < initialNumberOfShips + (increasePerRound * (currentRound - 1)); i++) {
-                if (remainingShips <= 0)
-                    break;
+            for (int i = 0; i < remainingShips; i++) {
+                if (remainingShips <= 0) break;
                 SpawnShip();
                 remainingShips--;
                 yield return new WaitForSeconds(spawnDelay);
@@ -43,17 +49,19 @@ public class EnemySpawner : MonoBehaviour {
         Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
 
-        ship.gameObject.GetComponent<Ship>().enabled = false;
-        ship.gameObject.GetComponent<EnemyShip>().enabled = true;
-        ship.gameObject.GetComponent<EnemyShip>().SpaceStation = spaceStation;
+        ship.IsEnemy = true;
+        ship.SpaceStation = spaceStation;
+        ship.faction = 1;
 
         Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
     }
 
-    public void ShipDestroyed() {
-        remainingShips--;
-        if (remainingShips <= 0 && !spawning) {
-            StartCoroutine(SpawnShips());
+    public static void ShipDestroyed() {
+        Debug.Log("Ship destroyed");
+        instance.remainingShips--;
+        if (instance.remainingShips <= 0 && !instance.spawning) {
+            instance.remainingShips = instance.initialNumberOfShips + (instance.increasePerRound * instance.currentRound);
+            instance.StartCoroutine(instance.SpawnShips());
         }
     }
 }
