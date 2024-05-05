@@ -15,11 +15,11 @@ public class ButtonText : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         originalText = text.text;
+        text.text = originalText + $"\n${ship.GetComponent<Ship>().ScrapCost} Scrap";
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = originalText + $"\n{ship.GetComponent<Ship>().ScrapCost} Scrap";
     }
 }
