@@ -72,7 +72,8 @@ public class ButtonManager : MonoBehaviour {
     // Asher this is to make it so that when you left click (On the UI) it will deselect the button.
     // ok
     void Update() {
-        if(SelectedButton != null && Input.GetMouseButtonDown(0)) {
+        if(SelectedButton != null && Input.GetMouseButtonDown(1)) {
+            DeselectButton();
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
             pointerData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();

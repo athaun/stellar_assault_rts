@@ -8,25 +8,13 @@ public class InstantiateShips : MonoBehaviour {
     [SerializeField] private Economy economy;
     public static event Action OnShipInstantiated;
     public GameObject selectedShip;
-    private Button shipButton;
 
     void Start() {
-        shipButton = GetComponent<Button>();
-
-        StartCoroutine(CheckButtonState());
-    }
-
-    IEnumerator CheckButtonState() {
-        while (true) {
-            bool canAffordShip = economy.Scrap >= selectedShip.GetComponent<Ship>().ScrapCost;
-            shipButton.interactable = canAffordShip;
-            yield return new WaitForSeconds(0.1f); // Check every 0.1 seconds
-        }
     }
 
     void Update() {
 
-        if (selectedShip != null && Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
+        if (selectedShip != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit[] hits = Physics.RaycastAll(ray);
