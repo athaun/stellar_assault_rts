@@ -61,19 +61,19 @@ public class ButtonManager : MonoBehaviour {
             });
             
         }
-        InstantiateShips.OnShipInstantiated += DeselectButton;
+        //InstantiateShips.OnShipInstantiated += DeselectButton;
     }
 
-    void OnDestroy() {
-        InstantiateShips.OnShipInstantiated -= DeselectButton;
-    }
+    // void OnDestroy() {
+    //     InstantiateShips.OnShipInstantiated -= DeselectButton;
+    // }
 
     // Asher dont touch this.
     // Asher this is to make it so that when you left click (On the UI) it will deselect the button.
     // ok
     void Update() {
         if(SelectedButton != null && Input.GetMouseButtonDown(1)) {
-            DeselectButton();
+            //DeselectButton();
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
             pointerData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();

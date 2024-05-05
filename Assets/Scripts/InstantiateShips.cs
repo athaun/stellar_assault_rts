@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InstantiateShips : MonoBehaviour {
     [SerializeField] private Economy economy;
-    public static event Action OnShipInstantiated;
+    //public static event Action OnShipInstantiated;
     public GameObject selectedShip;
 
     void Start() {
@@ -34,7 +34,7 @@ public class InstantiateShips : MonoBehaviour {
 
                     Instantiate(selectedShip, position, Quaternion.identity);
                     economy.UseScrap(selectedShip.GetComponent<Ship>().ScrapCost);
-                    OnShipInstantiated?.Invoke();
+                    //OnShipInstantiated?.Invoke();
                     break;
                 }
             }
