@@ -13,7 +13,9 @@ public class InstantiateShips : MonoBehaviour {
     }
 
     void Update() {
-
+        if(selectedShip != null && Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject()) {
+            ButtonManager.Instance.DeselectButton();
+        }
         if (selectedShip != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

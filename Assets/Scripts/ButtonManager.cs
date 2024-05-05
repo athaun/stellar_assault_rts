@@ -6,11 +6,15 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class ButtonManager : MonoBehaviour {
+    private static ButtonManager instance;
     private List<InstantiateShips> instantiateShips = new List<InstantiateShips>();
     public Button[] buttons;
     private Button SelectedButton;
 
-    public void SelectButton(Button button) {
+    public static ButtonManager Instance {
+        get => instance;
+    }
+     public void SelectButton(Button button) {
 
         // Prevents the player from moving selected units to the new unit position
         UnitSelectionManager.Instance.clearSelection();
@@ -24,10 +28,20 @@ public class ButtonManager : MonoBehaviour {
         {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
             selectedButtonText.fontStyle = FontStyles.Normal;
+
+            // Reset the color of the previously selected button
+            ColorBlock colorBlock = SelectedButton.colors;
+            colorBlock.normalColor = Color.white; // Change this to the default color of your buttons
+            SelectedButton.colors = colorBlock;
         }
 
         TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.fontStyle = FontStyles.Bold;
+
+        // Change the color of the selected button
+        ColorBlock selectedColorBlock = button.colors;
+        selectedColorBlock.normalColor = new Color32(85, 216, 255, 255);
+        button.colors = selectedColorBlock;
 
         SelectedButton = button;
 
@@ -44,6 +58,12 @@ public class ButtonManager : MonoBehaviour {
         {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
             selectedButtonText.fontStyle = FontStyles.Normal;
+
+            // Reset the color of the button
+            ColorBlock colorBlock = SelectedButton.colors;
+            colorBlock.normalColor = Color.white; // Change this to the default color of your buttons
+            SelectedButton.colors = colorBlock;
+
             foreach (InstantiateShips instantiateShip in instantiateShips)
             {
                 instantiateShip.enabled = false;
@@ -59,8 +79,9 @@ public class ButtonManager : MonoBehaviour {
             button.onClick.AddListener(() => {
                 SelectButton(button);
             });
-            
         }
+
+        instance = this;
         //InstantiateShips.OnShipInstantiated += DeselectButton;
     }
 
