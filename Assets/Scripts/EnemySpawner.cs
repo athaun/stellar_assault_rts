@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour {
 
     private static EnemySpawner instance;
-    public static EnemySpawner Instance { get; }
+    public static EnemySpawner Instance => instance;
 
     public Ship[] shipPrefabs;
     public Ship spaceStation;
@@ -20,6 +20,11 @@ public class EnemySpawner : MonoBehaviour {
     private int currentRound = 0;
     private int remainingShips;
     private bool spawning;
+
+    private int totalEnemies;
+
+    public int TotalEnemies => totalEnemies;
+    public int CurrentRound => currentRound;
 
 
     void Start() {
@@ -49,6 +54,8 @@ public class EnemySpawner : MonoBehaviour {
         Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
 
+        totalEnemies++;
+
         ship.IsEnemy = true;
         ship.SpaceStation = spaceStation;
         ship.faction = 1;
@@ -59,6 +66,7 @@ public class EnemySpawner : MonoBehaviour {
     public static void ShipDestroyed() {
         Debug.Log("Ship destroyed");
         instance.remainingShips--;
+        instance.totalEnemies--;
         if (instance.remainingShips <= 0 && !instance.spawning) {
             instance.remainingShips = instance.initialNumberOfShips + (instance.increasePerRound * instance.currentRound);
             instance.StartCoroutine(instance.SpawnShips());
