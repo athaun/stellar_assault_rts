@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour {
-    [SerializeField] private Economy economy;
     TextMeshProUGUI text;
 
     void Start() {

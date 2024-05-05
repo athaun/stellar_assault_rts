@@ -59,10 +59,8 @@ public class MenuSystem : MonoBehaviour {
         if (justChangedState != isPaused) {
             if (isPaused) {
                 setSystems(false);
-                Debug.Log("Systems off");
             } else {
                 setSystems(true);
-                Debug.Log("Systems on");
             }
         }
 
