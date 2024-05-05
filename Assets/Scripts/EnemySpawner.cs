@@ -31,7 +31,6 @@ public class EnemySpawner : MonoBehaviour {
         instance = this;
         remainingShips = initialNumberOfShips;
         StartCoroutine(SpawnShips());
-
     }
 
     IEnumerator SpawnShips() {
@@ -60,11 +59,10 @@ public class EnemySpawner : MonoBehaviour {
         ship.SpaceStation = spaceStation;
         ship.faction = 1;
 
-        Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+        // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
     }
 
     public static void ShipDestroyed() {
-        Debug.Log("Ship destroyed");
         instance.remainingShips--;
         instance.totalEnemies--;
         if (instance.remainingShips <= 0 && !instance.spawning) {
