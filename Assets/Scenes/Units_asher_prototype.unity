@@ -988,6 +988,12 @@ MonoBehaviour:
   startGameButton: {fileID: 1077753461}
   returnToGameButton: {fileID: 1096690911}
   playAgainButton: {fileID: 1657530287}
+  gameSystems:
+  - {fileID: 133065129}
+  - {fileID: 1477998710}
+  - {fileID: 435675029}
+  - {fileID: 675965800}
+  - {fileID: 1045165021}
 --- !u!1 &362354199
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1005,7 @@ GameObject:
   - component: {fileID: 362354200}
   - component: {fileID: 362354202}
   - component: {fileID: 362354201}
+  - component: {fileID: 362354203}
   m_Layer: 0
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1133,6 +1140,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362354199}
   m_CullTransparentMesh: 1
+--- !u!114 &362354203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362354199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94b20511b3f1c246b2682ada298b333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  economy: {fileID: 0}
 --- !u!1 &397442320
 GameObject:
   m_ObjectHideFlags: 0
