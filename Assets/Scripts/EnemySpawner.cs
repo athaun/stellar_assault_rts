@@ -7,21 +7,53 @@ public class EnemySpawner : MonoBehaviour {
     public Ship[] shipPrefabs;
     public Ship spaceStation;
 
-    public int numberOfShips = 10;
-    public float spawnRadius = 10f;
+    public int initialNumberOfShips = 2;
+    public int increasePerRound = 1;
+    public float spawnDelay = 2f;
+    public float roundDelay = 5f;
+    public Transform[] spawnPoints;
+
+    private int currentRound = 1;
+    private int remainingShips;
+    private bool spawning;
 
     void Start() {
-        for (int i = 0; i < numberOfShips; i++) {
-            Vector3 spawnPosition = Random.insideUnitSphere * spawnRadius;
-            spawnPosition.y = 0;
+        remainingShips = initialNumberOfShips;
+        StartCoroutine(SpawnShips());
+    }
 
-            Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
+    IEnumerator SpawnShips() {
+        spawning = true;
+        yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+        while (remainingShips > 0) {
+            for (int i = 0; i < initialNumberOfShips + (increasePerRound * (currentRound - 1)); i++) {
+                if (remainingShips <= 0)
+                    break;
+                SpawnShip();
+                remainingShips--;
+                yield return new WaitForSeconds(spawnDelay);
+            }
+            yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+            currentRound++;
+        }
+        spawning = false;
+    }
 
-            ship.gameObject.GetComponent<Ship>().enabled = false;
-            ship.gameObject.GetComponent<EnemyShip>().enabled = true;
-            ship.gameObject.GetComponent<EnemyShip>().SpaceStation = spaceStation;            
+    void SpawnShip() {
+        Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
 
-            Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+        ship.gameObject.GetComponent<Ship>().enabled = false;
+        ship.gameObject.GetComponent<EnemyShip>().enabled = true;
+        ship.gameObject.GetComponent<EnemyShip>().SpaceStation = spaceStation;
+
+        Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+    }
+
+    public void ShipDestroyed() {
+        remainingShips--;
+        if (remainingShips <= 0 && !spawning) {
+            StartCoroutine(SpawnShips());
         }
     }
 }
