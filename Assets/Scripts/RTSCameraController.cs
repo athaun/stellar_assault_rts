@@ -22,7 +22,6 @@ public class RTSCameraController : MonoBehaviour {
     private Quaternion camRotation;
     public float cameraRotationSpeed = 7F;
 
-
     [Header("Camera zoom")]
     public float zoomSpeed;
     public float minZoomDist;

@@ -2,6 +2,13 @@
 
 public class UnitController : MonoBehaviour {
 
+    /*
+        Responsible for controlling the selected unit(s) and their movement via mouse input
+    */
+
+    private static UnitController instance;
+    public static UnitController Instance { get => instance; }
+
     private Camera mainCamera;
     private LayerMask groundLayer;
 
@@ -30,12 +37,29 @@ public class UnitController : MonoBehaviour {
         }
     }
 
-    public void findSelectedUnit() {
-        if (units.SelectedUnits.Count == 0) {
-            move = false;
+    /* 
+        Checks for mouse input and moves the selected unit(s) to the new position
+    */
+    void Update() {
+        // If there are selected units, get the new position to move to
+        if (units.SelectedUnits.Count != 0) {
+            
+            getMoveToLocation();
+            
+            if (move) {
+                // Move the selected unit(s) to the new position
+                foreach (Ship ship in units.SelectedUnits) {
+                    ship.Mover.moveTo(newPosition);
+                }
+
+                move = false;
+            }
         }
     }
 
+    /* 
+        Returns the position of the first selected unit
+    */
     public Vector3 getSelectedUnitPosition() {
         if (units.SelectedUnits.Count == 0) {
             return Vector3.positiveInfinity;
@@ -43,6 +67,10 @@ public class UnitController : MonoBehaviour {
         return units.SelectedUnits[0].transform.position;
     }
 
+    /*
+        Detects clicks on the ground and sets a new position for the selected unit(s) to move to
+        Checks the click position for any targets to attack.
+    */
     private void getMoveToLocation() {
         if (Input.GetMouseButtonDown(1)) {
             // First press, selects a X and Z position on the plane
@@ -68,23 +96,41 @@ public class UnitController : MonoBehaviour {
         if (pressed) {
             newPosition.y = 0.001f;
             newPositionMarker.transform.position = newPosition;
+            AttackPosition();
         }
     }
 
-    void Update() {
-        findSelectedUnit();
-        if (units.SelectedUnits.Count != 0) {
-            getMoveToLocation();
-            if (move) {
-                // selectedUnit.GetComponent<UnitMover>().moveTo(newPosition);
-                foreach (Ship ship in units.SelectedUnits) {
-                    ship.Mover.moveTo(newPosition);
+    /*
+        Checks if the clicked position is a target and sets the selected unit(s) to attack it
+    */
+    private void AttackPosition() {
+        Transform unit = units.getClicked();
+
+        if (unit != null) {
+
+            Ship ship = unit.parent.gameObject.GetComponent<Ship>();
+
+            // If the ship is not null and is an enemy, set the selected unit(s) to attack it
+            if (ship != null && ship.IsEnemy) {
+                foreach (Ship s in units.SelectedUnits) {
+                    // Clear the targets of the selected unit(s) and set the new target, ignoring any previous move-only orders
+                    s.clearTargets();
+                    s.addSelectedTarget(ship);
+                    s.HasMoveOrders = false;
                 }
-                move = false;
+            } else {
+                // If this isn't an enemy ship, clear the targets of the selected unit(s) and set the new position to move to
+                foreach (Ship s in units.SelectedUnits) {
+                    s.clearTargets();
+                    s.HasMoveOrders = true;
+                }
             }
         }
     }
 
+    /*
+        Returns the position on the ground-plane that the mouse is over
+    */
     public Vector3 GetPointUnderCursor() {
         // Create a new plane with normal (0, 1, 0) and passing through the origin
         Plane plane = new Plane(new Vector3(0, 1, 0), 0);
@@ -107,8 +153,14 @@ public class UnitController : MonoBehaviour {
         // Initialize a variable to store the hit position of the raycast
         RaycastHit hitPosition;
 
+        // Get the layer mask for the "Awareness" layer
+        int awarenessLayer = LayerMask.NameToLayer("Awareness");
+
+        // Create a layer mask that includes all layers except the "Awareness" layer
+        int layerMask = ~(1 << awarenessLayer);
+
         // If a raycast from the mouse world position in the direction of the camera's forward vector hits something
-        if (Physics.Raycast(mouseWorldPosition, mainCamera.transform.forward, out hitPosition, 100, groundLayer)) {
+        if (Physics.Raycast(mouseWorldPosition, mainCamera.transform.forward, out hitPosition, 100, layerMask)) {
             // Return the point of the hit
             return hitPosition.point;
         } else {
