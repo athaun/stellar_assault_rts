@@ -192,7 +192,7 @@ MonoBehaviour:
   scrapCost: 1000
   electricityConsumption: 10
   electricityGeneration: 0
-  maxHealth: 0
+  maxHealth: 20
   isPassive: 0
   attackDamage: 500
   awarenessRange: 3
