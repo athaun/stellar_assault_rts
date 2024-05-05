@@ -20,6 +20,9 @@ public class UnitController : MonoBehaviour {
     private Vector3 newPosition;
     public GameObject newPositionMarker;
 
+    private int totalUnitsDestroyed = 0;
+    public int TotalUnitsDestroyed { get => totalUnitsDestroyed; set => totalUnitsDestroyed = value; }
+
     void Awake() {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); // set the mainCamera variable to the camera with the tag "MainCamera"
         groundLayer = LayerMask.GetMask("Terrain"); // Set the ground layer (at y = 0) as the "Terrain" layer
@@ -35,6 +38,8 @@ public class UnitController : MonoBehaviour {
             newPositionMarker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             newPositionMarker.GetComponent<MeshRenderer>().material.color = Color.red;
         }
+
+        instance = this;
     }
 
     /* 

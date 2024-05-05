@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
+    private Economy instance;
+    public Economy Instance => instance;
+
     private Ship ship;
     private static int netElectricity = 0;
     [SerializeField] private int scrap = 0;
@@ -15,6 +18,11 @@ public class Economy : MonoBehaviour
     public int Electricity { get => electricity; set => electricity = value; }
 
     public int NetElectricity { get => netElectricity; set => netElectricity = value; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     //scrap Functions

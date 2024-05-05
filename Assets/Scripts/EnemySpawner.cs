@@ -22,6 +22,8 @@ public class EnemySpawner : MonoBehaviour {
     private bool spawning;
 
     private int totalEnemies;
+    private int totalEnemiesDestroyed;
+    public int TotalEnemiesDestroyed => totalEnemiesDestroyed;
 
     public int TotalEnemies => totalEnemies;
     public int CurrentRound => currentRound;
@@ -65,6 +67,7 @@ public class EnemySpawner : MonoBehaviour {
     public static void ShipDestroyed() {
         instance.remainingShips--;
         instance.totalEnemies--;
+        instance.totalEnemiesDestroyed++;
         if (instance.remainingShips <= 0 && !instance.spawning) {
             instance.remainingShips = instance.initialNumberOfShips + (instance.increasePerRound * instance.currentRound);
             instance.StartCoroutine(instance.SpawnShips());

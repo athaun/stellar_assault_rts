@@ -219,6 +219,7 @@ public class Ship : MonoBehaviour {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             UnitSelectionManager.Instance.removeShip(this);
             if (isEnemy) EnemySpawner.ShipDestroyed();
+            else UnitController.Instance.TotalUnitsDestroyed++;
         }
     }
 

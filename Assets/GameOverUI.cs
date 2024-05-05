@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EcoStatUpdater : MonoBehaviour {
+public class GameOverUI : MonoBehaviour {
     [SerializeField] private Economy economy;
     TextMeshProUGUI text;
 
@@ -13,6 +13,11 @@ public class EcoStatUpdater : MonoBehaviour {
     }
 
     void Update() {
-        text.text = $"Scrap\t\t${economy.Scrap}\nWave\t\t{EnemySpawner.Instance.CurrentRound}\nEnemies\t{EnemySpawner.Instance.TotalEnemies}";
+        text.text = $@"Game Over
+
+You survived for {EnemySpawner.Instance.CurrentRound} waves!
+Destroyed {EnemySpawner.Instance.TotalEnemiesDestroyed} enemies
+and lost {UnitController.Instance.TotalUnitsDestroyed} ships";
+
     }
 }
