@@ -26,6 +26,10 @@ public class InstantiateShips : MonoBehaviour {
                     continue;
                 }
 
+                if (hit.collider.CompareTag("Unit") || hit.collider.CompareTag("SelectedUnit")) {
+                    return;
+                }
+
                 if (hit.collider.tag == "BasePlane") {
                     Vector3 position = hit.point;
                     position.y = 0.01f;

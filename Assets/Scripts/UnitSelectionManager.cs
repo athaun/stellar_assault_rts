@@ -43,7 +43,7 @@ public class UnitSelectionManager : MonoBehaviour {
 
         // Must be after mouseButtonUp, hence the redundancy
         if (Input.GetMouseButton(0)) {
-            selectedUnits.Clear();
+            clearBoxSelection();
             updateSelectionBox(Input.mousePosition);
         }
     }    
@@ -142,10 +142,28 @@ public class UnitSelectionManager : MonoBehaviour {
                     ship.selectedByClick = false;
                     selectedUnits.Remove(ship);
                 }
+                Debug.Log("Selected " + selectedUnits.Count + " units");
             }
         } else if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) {
             clearSelection();
+            Debug.Log("Cleared selection");
         }
+    }
+
+    private void clearBoxSelection() {
+        Ship selectedByClick = null;
+        foreach (Ship ship in selectedUnits) {
+            if (ship.selectedByClick) {
+                selectedByClick = ship;
+                break;
+            }
+            ship.tag = "selectableUnit";
+            ship.Outline.enabled = false;
+        }
+        selectedUnits.Clear();
+        if (selectedByClick != null) {
+            selectedUnits.Add(selectedByClick);
+        }        
     }
 
     public void clearSelection() {
