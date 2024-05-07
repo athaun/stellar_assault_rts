@@ -2367,25 +2367,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WASD to move
-
-    Q/E to rotate camera
-
-
-    Click on ships to select
-    ships
-
-    (or click and drag for multiple)
-
-    Right click to move/attack
-
-
-    Buy
-    ships to defend
-
-    your space station against waves
-
-    of maurading pirates!'
+  m_text: "WASD to move\r\nQ/E to rotate camera\r\n\r\nLeft-click on ships to select
+    ships (click and drag for multiple)\r\nRight click to move/attack\r\n\n\nBuy
+    ships to defend your space station against waves\r\nof marauding pirates!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cdf6aeca91cfbc4492d1306948f5047, type: 2}
   m_sharedMaterial: {fileID: -6040023047511448309, guid: 1cdf6aeca91cfbc4492d1306948f5047,
@@ -2956,25 +2940,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WASD to move
-
-    Q/E to rotate camera
-
-
-    Click on ships to select
-    ships
-
-    (or click and drag for multiple)
-
-    Right click to move/attack
-
-
-    Buy
-    ships to defend
-
-    your space station against waves
-
-    of maurading pirates!'
+  m_text: "WASD to move\r\nQ/E to rotate camera\r\n\r\nLeft-click on ships to select
+    ships (click and drag for multiple)\r\nRight click to move/attack\r\n\n\nBuy
+    ships to defend your space station against waves\r\nof marauding pirates!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1cdf6aeca91cfbc4492d1306948f5047, type: 2}
   m_sharedMaterial: {fileID: -6040023047511448309, guid: 1cdf6aeca91cfbc4492d1306948f5047,
