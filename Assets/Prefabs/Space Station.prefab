@@ -13349,6 +13349,8 @@ MonoBehaviour:
   scale: {x: 1, y: 0.1, z: 0.1}
   color: {r: 0, g: 1, b: 0, a: 1}
   referenceColor: {r: 1, g: 0.5990566, b: 0.5990566, a: 1}
+  green: {fileID: 2100000, guid: 7cd6c751f9cbe444cb9c6835521cb353, type: 2}
+  red: {fileID: 2100000, guid: f2845b5c181d6614f9419bd73e6a9f79, type: 2}
 --- !u!1 &7498023063330041274
 GameObject:
   m_ObjectHideFlags: 0

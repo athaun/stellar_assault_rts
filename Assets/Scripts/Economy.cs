@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Economy : MonoBehaviour
-{
+public class Economy : MonoBehaviour {
     private static Economy instance;
     public static Economy Instance => instance;
 
@@ -19,74 +18,61 @@ public class Economy : MonoBehaviour
 
     public int NetElectricity { get => netElectricity; set => netElectricity = value; }
 
-    private void Awake()
-    {
+    private void Awake() {
         instance = this;
     }
 
     // Start is called before the first frame update
     //scrap Functions
-    public void AddScrap(int amount)
-    {
+    public void AddScrap(int amount) {
         scrap += amount;
     }
-    
-    public IEnumerator GenerateScrap(int amount, bool isActive)
-    {
-        while(isActive)
-        {
+
+    public IEnumerator GenerateScrap(int amount, bool isActive) {
+        while (isActive) {
             yield return new WaitForSeconds(1);
             scrap += amount;
         }
     }
 
-    public void UseScrap(int amount)
-    {
+    public void UseScrap(int amount) {
         scrap -= amount;
     }
     //End of scrap Functions
 
     //electricity Functions
-    public void AddElectricity(int amount)
-    {
+    public void AddElectricity(int amount) {
         electricity += amount;
     }
 
-    public IEnumerator ConsumeElectricity(int amount, bool isActive)
-    {
+    public IEnumerator ConsumeElectricity(int amount, bool isActive) {
         netElectricity -= amount;
-        
-        while(isActive)
-        {
+
+        while (isActive) {
             yield return new WaitForSeconds(1);
             electricity -= amount;
         }
     }
 
-    public IEnumerator GenerateElectricity(int amount, bool isActive)
-    {
+    public IEnumerator GenerateElectricity(int amount, bool isActive) {
         netElectricity += amount;
-        while(isActive)
-        {
+        while (isActive) {
             yield return new WaitForSeconds(1);
             electricity += amount;
         }
     }
 
-    public void RemoveElectricity(int amount)
-    {
+    public void RemoveElectricity(int amount) {
         electricity -= amount;
     }
     //End of electricity Functions
 
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 }

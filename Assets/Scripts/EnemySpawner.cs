@@ -82,7 +82,7 @@ public class EnemySpawner : MonoBehaviour {
         // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
     }
 
-    
+
 
     public static void ShipDestroyed() {
         if (instance.remainingShips > 0 && instance.totalEnemies > 0) {

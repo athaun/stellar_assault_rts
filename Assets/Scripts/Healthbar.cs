@@ -13,6 +13,9 @@ public class Healthbar : MonoBehaviour {
     public Color color = Color.green; 
     public Color referenceColor = Color.gray; 
 
+    public Material green, red;
+
+
     private void Awake() {
         createHealthBar();
         createReferenceBar();
@@ -33,7 +36,7 @@ public class Healthbar : MonoBehaviour {
         // Adjust position and color of the health bar
         barTransform.localPosition = new Vector3(scale.x * 1, 0f, 0f); // Adjust the position of the health bar
         Renderer barRenderer = barObject.GetComponent<Renderer>();
-        barRenderer.material.color = color;
+        barRenderer.material = green;
     }
 
     private void createReferenceBar() {
@@ -51,7 +54,7 @@ public class Healthbar : MonoBehaviour {
         // Adjust position and color of the reference bar
         referenceTransform.localPosition = new Vector3(scale.x * 1, 0f, 0f);
         Renderer referenceRenderer = referenceObject.GetComponent<Renderer>();
-        referenceRenderer.material.color = Color.gray;
+        referenceRenderer.material = red;
     }
 
     public void updateHealth(float currentHealth, float maxHealth) {
