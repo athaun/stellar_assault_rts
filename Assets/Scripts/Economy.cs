@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Economy : MonoBehaviour
 {
-    private Economy instance;
-    public Economy Instance => instance;
+    private static Economy instance;
+    public static Economy Instance => instance;
 
     private Ship ship;
     private static int netElectricity = 0;

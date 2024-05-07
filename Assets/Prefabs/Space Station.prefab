@@ -13258,10 +13258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 0
-  scrapGeneration: 25
+  scrapGeneration: 30
   scrapCost: 1000000
-  electricityConsumption: 125
-  electricityGeneration: 200
+  electricityConsumption: 0
+  electricityGeneration: 0
   maxHealth: 20000
   isPassive: 1
   attackDamage: 0
@@ -13277,8 +13277,8 @@ MonoBehaviour:
   e_impactPrefab: {fileID: 0}
   explosionPrefab: {fileID: 1036410813808012, guid: d259e158f02233a4aba5f6d49c930ae5,
     type: 3}
-  isActiveElectricityGeneration: 1
-  isActiveElectricityConsumption: 1
+  isActiveElectricityGeneration: 0
+  isActiveElectricityConsumption: 0
   isActiveScrapGeneration: 1
   selectedByClick: 0
 --- !u!195 &6532899624931870726
