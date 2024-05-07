@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour {
 
@@ -28,6 +29,8 @@ public class EnemySpawner : MonoBehaviour {
     public int TotalEnemies => totalEnemies;
     public int CurrentRound => currentRound;
 
+    public Button triggerWaveButton;
+
 
     void Start() {
         instance = this;
@@ -50,6 +53,9 @@ public class EnemySpawner : MonoBehaviour {
                 yield return new WaitForSeconds(spawnDelay);
             }
 
+            spawning = false;
+            Debug.Log("Spawnin for " + currentRound + " completed");
+
             // Wait until all ships are destroyed
             while (totalEnemies > 0) {
                 yield return null;
@@ -66,7 +72,7 @@ public class EnemySpawner : MonoBehaviour {
 
             increasePerRound += 2; // Increase the number of ships spawned per round
         }
-        spawning = false;
+
     }
 
     void SpawnShip() {
@@ -80,6 +86,17 @@ public class EnemySpawner : MonoBehaviour {
         ship.faction = 1;
 
         // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+    }
+
+    public void TriggerWave() {
+        Debug.Log("Attempting to trigger wave");
+        if (spawning) return;
+
+        currentRound++;
+        remainingShips = initialNumberOfShips + (increasePerRound * currentRound);
+
+        Debug.Log("Triggering wave " + currentRound + " with " + remainingShips + " ships");
+        StartCoroutine(SpawnShips());
     }
 
 
