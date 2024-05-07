@@ -13,6 +13,6 @@ public class EcoStatUpdater : MonoBehaviour {
     }
 
     void Update() {
-        text.text = $"Scrap\t\t${economy.Scrap}\nWave\t\t{EnemySpawner.Instance.CurrentRound}\nEnemies\t{EnemySpawner.Instance.TotalEnemies}";
+        text.text = $"Scrap\t\t${economy.Scrap}\nWave\t\t{EnemySpawner.Instance.CurrentRound + 1}\nEnemies\t{EnemySpawner.Instance.TotalEnemies}";
     }
 }

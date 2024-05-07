@@ -81,7 +81,9 @@ public class UnitController : MonoBehaviour {
             // First press, selects a X and Z position on the plane
             newPosition = GetPointUnderCursor();
             pressed = true;
-            move = false;
+            move = true;
+
+            ButtonManager.Instance.DeselectButton();
 
         } else if (Input.GetMouseButtonUp(1)) {
             // The mouse has been released, a position to move to has been stored in a Vector3

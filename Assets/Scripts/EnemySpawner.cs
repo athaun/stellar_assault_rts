@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour {
     public Ship spaceStation;
 
     public int initialNumberOfShips = 2;
-    public int increasePerRound = 1;
+    public int increasePerRound = 2;
     public float spawnDelay = 2f;
     public float roundDelay = 5f;
     public Transform[] spawnPoints;
@@ -31,7 +31,12 @@ public class EnemySpawner : MonoBehaviour {
 
     void Start() {
         instance = this;
-        remainingShips = initialNumberOfShips;
+        currentRound = 0; // Ensure currentRound is initialized to 0
+        if (currentRound == 0) {
+            remainingShips = initialNumberOfShips * 2; // Double initialNumberOfShips for round 0
+        } else {
+            remainingShips = initialNumberOfShips + (increasePerRound * currentRound); // Initialize remainingShips according to currentRound for other rounds
+        }
         StartCoroutine(SpawnShips());
     }
 
@@ -42,11 +47,24 @@ public class EnemySpawner : MonoBehaviour {
             for (int i = 0; i < remainingShips; i++) {
                 if (remainingShips <= 0) break;
                 SpawnShip();
-                remainingShips--;
                 yield return new WaitForSeconds(spawnDelay);
             }
+
+            // Wait until all ships are destroyed
+            while (totalEnemies > 0) {
+                yield return null;
+            }
+
             yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+
             currentRound++;
+            if (currentRound == 0) {
+                remainingShips = initialNumberOfShips * 2; // Double initialNumberOfShips for round 0
+            } else {
+                remainingShips = initialNumberOfShips + (increasePerRound * currentRound); // Reset remaining ships for the new round
+            }
+
+            increasePerRound += 2; // Increase the number of ships spawned per round
         }
         spawning = false;
     }
@@ -64,9 +82,13 @@ public class EnemySpawner : MonoBehaviour {
         // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
     }
 
+    
+
     public static void ShipDestroyed() {
-        instance.remainingShips--;
-        instance.totalEnemies--;
+        if (instance.remainingShips > 0 && instance.totalEnemies > 0) {
+            instance.remainingShips--;
+            instance.totalEnemies--;
+        }
         instance.totalEnemiesDestroyed++;
         if (instance.remainingShips <= 0 && !instance.spawning) {
             instance.remainingShips = instance.initialNumberOfShips + (instance.increasePerRound * instance.currentRound);

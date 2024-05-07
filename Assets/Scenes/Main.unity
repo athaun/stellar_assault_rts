@@ -2448,8 +2448,8 @@ MonoBehaviour:
   spaceStation: {fileID: 1552122979}
   initialNumberOfShips: 2
   increasePerRound: 2
-  spawnDelay: 0.5
-  roundDelay: 5
+  spawnDelay: 0.1
+  roundDelay: 3
   spawnPoints:
   - {fileID: 536177489}
   - {fileID: 1538529050}
