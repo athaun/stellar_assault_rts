@@ -297,7 +297,7 @@ MonoBehaviour:
   faction: 0
   scrapGeneration: 0
   scrapCost: 115
-  electricityConsumption: 15
+  electricityConsumption: 10
   electricityGeneration: 0
   maxHealth: 100
   isPassive: 0

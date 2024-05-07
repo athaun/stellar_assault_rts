@@ -528,9 +528,9 @@ MonoBehaviour:
   faction: 0
   scrapGeneration: 0
   scrapCost: 200
-  electricityConsumption: 20
+  electricityConsumption: 15
   electricityGeneration: 0
-  maxHealth: 100
+  maxHealth: 235
   isPassive: 0
   attackDamage: 40
   awarenessRange: 9

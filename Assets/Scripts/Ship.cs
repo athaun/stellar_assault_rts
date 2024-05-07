@@ -82,6 +82,7 @@ public class Ship : MonoBehaviour {
         economy = FindFirstObjectByType<Economy>();
         healthbar = GetComponent<Healthbar>();
 
+        if (isEnemy) faction = 1;
 
         UnitSelectionManager managerInstance = FindFirstObjectByType<UnitSelectionManager>();
         if (managerInstance != null) {
@@ -111,6 +112,10 @@ public class Ship : MonoBehaviour {
                 turret.muzzleFlashPrefab = e_muzzleFlashPrefab;
                 turret.bulletPrefab = e_bulletPrefab;
                 turret.impactPrefab = e_impactPrefab;
+
+                isActiveElectricityConsumption = false;
+                isActiveElectricityGeneration = false;
+                isActiveScrapGeneration = false;
             }
         }
 
@@ -125,10 +130,6 @@ public class Ship : MonoBehaviour {
         }
         if (isActiveScrapGeneration) {
             StartCoroutine(economy.GenerateScrap(scrapGeneration, isActiveScrapGeneration));//False by default
-        }
-
-        if (isEnemy) {
-            faction = 1;
         }
     }
 
@@ -216,10 +217,17 @@ public class Ship : MonoBehaviour {
             isActiveElectricityGeneration = false;
             isActiveElectricityConsumption = false;
             isActiveScrapGeneration = false;
+            
+            // Explosion effect
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+            // Clean up references and update stats
             UnitSelectionManager.Instance.removeShip(this);
             if (isEnemy) EnemySpawner.ShipDestroyed();
             else UnitController.Instance.TotalUnitsDestroyed++;
+
+            // Give the player back some scrap
+            Economy.Instance.AddScrap(25);
         }
     }
 

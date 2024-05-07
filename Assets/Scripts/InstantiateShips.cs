@@ -30,7 +30,8 @@ public class InstantiateShips : MonoBehaviour {
                     Vector3 position = hit.point;
                     position.y = 0.01f;
                     if (economy.Scrap < selectedShip.GetComponent<Ship>().ScrapCost) {
-                        Debug.Log("Not enough scrap to build this ship");
+                        // Debug.Log("Not enough scrap to build this ship");
+                        ButtonManager.Instance.DeselectButton();
                         break;
                     }
 
