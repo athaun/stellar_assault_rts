@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class Ship : MonoBehaviour {
@@ -131,6 +132,15 @@ public class Ship : MonoBehaviour {
         if (isActiveScrapGeneration) {
             StartCoroutine(economy.GenerateScrap(scrapGeneration, isActiveScrapGeneration));//False by default
         }
+
+        // Add a simple sphere mesh to represent the unit on the minimap
+        GameObject minimapIcon = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        minimapIcon.transform.parent = transform;
+        minimapIcon.transform.localPosition = Vector3.zero + Vector3.up * 20f;
+        minimapIcon.transform.localScale = new Vector3(4.5f / transform.localScale.x, 1, 4.5f / transform.localScale.z);
+        minimapIcon.GetComponent<Renderer>().material.shader = Shader.Find("Unlit/Color");
+        minimapIcon.GetComponent<Renderer>().material = IsEnemy ? UnitSelectionManager.Instance.redMaterial : UnitSelectionManager.Instance.cyanMaterial;
+        minimapIcon.layer = LayerMask.NameToLayer("Minimap");
     }
 
     void Update() {

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitSelectionManager : MonoBehaviour {
 
+    public Material cyanMaterial;
+    public Material redMaterial;
+
     private static UnitSelectionManager instance;
     public static UnitSelectionManager Instance { get => instance; }
 

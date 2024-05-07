@@ -30,8 +30,9 @@ public class RTSCameraController : MonoBehaviour {
     // private bool moveToUnit = false;
     // private Vector3 unitPos = Vector3.positiveInfinity;
 
-    private void awake() {
-        cam = Camera.main;
+    private void Start() {
+        cam.cullingMask = ~(1 << LayerMask.NameToLayer("Minimap"));
+
     }
 
     void Update() {
