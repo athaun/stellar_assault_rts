@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour {
     public Ship spaceStation;
 
     public int initialNumberOfShips = 2;
-    public int increasePerRound = 1;
+    public int increasePerRound = 4;
     public float spawnDelay = 2f;
     public float roundDelay = 5f;
     public Transform[] spawnPoints;
@@ -29,40 +29,54 @@ public class EnemySpawner : MonoBehaviour {
     public int CurrentRound => currentRound;
 
 
-    void Start() {
-        instance = this;
-        remainingShips = initialNumberOfShips;
-        StartCoroutine(SpawnShips());
+  void Start() {
+    instance = this;
+    currentRound = 0; // Ensure currentRound is initialized to 0
+    if(currentRound == 0) {
+        remainingShips = initialNumberOfShips * 2; // Double initialNumberOfShips for round 0
+    } else {
+        remainingShips = initialNumberOfShips + (increasePerRound * currentRound); // Initialize remainingShips according to currentRound for other rounds
     }
+    StartCoroutine(SpawnShips());
+}
 
-    IEnumerator SpawnShips() {
-        spawning = true;
-        yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
-        while (remainingShips > 0) {
-            for (int i = 0; i < remainingShips; i++) {
-                if (remainingShips <= 0) break;
-                SpawnShip();
-                remainingShips--;
-                yield return new WaitForSeconds(spawnDelay);
-            }
-            yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
-            currentRound++;
+IEnumerator SpawnShips() {
+    spawning = true;
+    yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+    while (remainingShips > 0) {
+        for (int i = 0; i < remainingShips; i++) {
+            if (remainingShips <= 0) break;
+            SpawnShip();
+            yield return new WaitForSeconds(spawnDelay);
         }
-        spawning = false;
+        // Wait until all ships are destroyed
+        while (totalEnemies > 0) {
+            yield return null;
+        }
+        yield return new WaitForSeconds(roundDelay); // Wait before starting a new round
+        currentRound++;
+        if(currentRound == 0) {
+            remainingShips = initialNumberOfShips * 2; // Double initialNumberOfShips for round 0
+        } else {
+            remainingShips = initialNumberOfShips + (increasePerRound * currentRound); // Reset remaining ships for the new round
+        }
+        increasePerRound *= 2; // Double increasePerRound for each subsequent round
     }
+    spawning = false;
+}
 
-    void SpawnShip() {
-        Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
-        Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
+   void SpawnShip() {
+    Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+    Ship ship = Instantiate(shipPrefabs[Random.Range(0, shipPrefabs.Length)], spawnPosition, Quaternion.identity);
 
-        totalEnemies++;
+    totalEnemies++;
 
-        ship.IsEnemy = true;
-        ship.SpaceStation = spaceStation;
-        ship.faction = 1;
+    ship.IsEnemy = true;
+    ship.SpaceStation = spaceStation;
+    ship.faction = 1;
 
-        // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
-    }
+    // Debug.Log("Created enemy at " + spawnPosition + " of type " + ship);
+}
 
     public static void ShipDestroyed() {
         instance.remainingShips--;
