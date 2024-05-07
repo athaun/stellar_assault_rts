@@ -11,8 +11,8 @@ public class EnemySpawner : MonoBehaviour {
     public Ship[] shipPrefabs;
     public Ship spaceStation;
 
-    public int initialNumberOfShips = 2;
-    public int increasePerRound = 2;
+    public int initialNumberOfShips;
+    public int increasePerRound;
     public float spawnDelay = 2f;
     public float roundDelay = 5f;
     public Transform[] spawnPoints;

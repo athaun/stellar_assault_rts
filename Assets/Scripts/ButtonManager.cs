@@ -14,18 +14,18 @@ public class ButtonManager : MonoBehaviour {
     public static ButtonManager Instance {
         get => instance;
     }
-     public void SelectButton(Button button) {
+
+    public void SelectButton(Button button) {
 
         // Prevents the player from moving selected units to the new unit position
         UnitSelectionManager.Instance.clearSelection();
 
-        if(SelectedButton == button) {
+        if (SelectedButton == button) {
             DeselectButton();
             return;
         }
-        
-        if (SelectedButton != null)
-        {
+
+        if (SelectedButton != null) {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
             selectedButtonText.fontStyle = FontStyles.Normal;
 
@@ -45,17 +45,19 @@ public class ButtonManager : MonoBehaviour {
 
         SelectedButton = button;
 
-        foreach(InstantiateShips instantiateShip in instantiateShips)
-        {
+        foreach (InstantiateShips instantiateShip in instantiateShips) {
             instantiateShip.enabled = false;
         }
 
         button.GetComponentInChildren<InstantiateShips>().enabled = true;
     }
 
+    public static Button selectedButton() {
+        return instance.SelectedButton;
+    }
+
     public void DeselectButton() {
-        if (SelectedButton != null)
-        {
+        if (SelectedButton != null) {
             TextMeshProUGUI selectedButtonText = SelectedButton.GetComponentInChildren<TextMeshProUGUI>();
             selectedButtonText.fontStyle = FontStyles.Normal;
 
@@ -64,8 +66,7 @@ public class ButtonManager : MonoBehaviour {
             colorBlock.normalColor = Color.white; // Change this to the default color of your buttons
             SelectedButton.colors = colorBlock;
 
-            foreach (InstantiateShips instantiateShip in instantiateShips)
-            {
+            foreach (InstantiateShips instantiateShip in instantiateShips) {
                 instantiateShip.enabled = false;
             }
             SelectedButton = null;
@@ -93,26 +94,22 @@ public class ButtonManager : MonoBehaviour {
     // Asher this is to make it so that when you left click (On the UI) it will deselect the button.
     // ok
     void Update() {
-        if(SelectedButton != null && Input.GetMouseButtonDown(1)) {
+        if (SelectedButton != null && Input.GetMouseButtonDown(1)) {
             //DeselectButton();
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
             pointerData.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerData, results);
 
-            if(results.Count > 0)
-            {
-                foreach(RaycastResult result in results)
-                {
+            if (results.Count > 0) {
+                foreach (RaycastResult result in results) {
                     // Skip any GameObjects with colliders that we want to ignore
                     Collider collider = result.gameObject.GetComponent<Collider>();
-                    if(collider != null && collider.gameObject.layer == LayerMask.NameToLayer("Awareness"))
-                    {
+                    if (collider != null && collider.gameObject.layer == LayerMask.NameToLayer("Awareness")) {
                         continue;
                     }
 
-                    if(result.gameObject.GetComponent<Button>() != null)
-                    {
+                    if (result.gameObject.GetComponent<Button>() != null) {
                         return;
                     }
                 }

@@ -40,6 +40,7 @@ public class UnitSelectionManager : MonoBehaviour {
 
         // Must be after mouseButtonUp, hence the redundancy
         if (Input.GetMouseButton(0)) {
+            selectedUnits.Clear();
             updateSelectionBox(Input.mousePosition);
         }
     }    

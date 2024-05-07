@@ -8,8 +8,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/AI_Movement_roy.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Units_asher_prototype.unity
     guid: 86cb95020b21148d9a0e8cef08d9a454
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 2c15bbb2cabe4474e80897a70d9eadf7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
